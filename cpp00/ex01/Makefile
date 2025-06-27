@@ -6,21 +6,22 @@
 #    By: toferrei <toferrei@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/23 11:43:06 by toferrei          #+#    #+#              #
-#    Updated: 2025/06/24 12:23:45 by toferrei         ###   ########.fr        #
+#    Updated: 2025/06/27 20:26:43 by toferrei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	main
 
-SOURCE		=	main.cpp \
-				# Sample.class.cpp
+SOURCE		=	Contact.cpp \
+				PhoneBook.cpp \
+				main.cpp
 
 OBJ_DIR		=	Objects/
 
 OBJECTS		=	$(patsubst %.cpp, $(OBJ_DIR)%.o, $(SOURCE))
 
 CC			=	c++
-CFLAGS		=	-g #-std=c++98
+CFLAGS		=	-Wall -Wextra -Werror -g -std=c++98
 
 all: $(NAME)
 

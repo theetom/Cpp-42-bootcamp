@@ -6,22 +6,18 @@
 /*   By: toferrei <toferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 13:35:45 by toferrei          #+#    #+#             */
-/*   Updated: 2025/06/25 13:43:43 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/06/27 20:30:01 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
-Contact::Contact( void )
-{
-
-	return ;
-
+Contact::Contact() {
+	FirstName = "";
+	LastName = "";
+	Nickname = "";
 }
 
-Contact::~Contact( void )
-{
-
-	return ;
+Contact::~Contact() {
 
 }
