@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 13:43:55 by toferrei          #+#    #+#             */
-/*   Updated: 2025/06/27 20:33:50 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/07/01 17:32:54 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,23 @@
 # define PHONEBOOK_HPP
 
 # include "Contact.hpp"
-# include <iostream>
+# include <stdlib.h>
+# include <iomanip>
 
 class PhoneBook
 {
 
 	private:
 		Contact contact_array[8];
+		int		index;
 
 	public:
 
 		PhoneBook();
 		~PhoneBook();
-		bool add();
+		bool	add();
+		void	move_all_up();
+		void	print();
 
 };
 

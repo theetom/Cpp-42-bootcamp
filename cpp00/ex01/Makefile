@@ -6,7 +6,7 @@
 #    By: toferrei <toferrei@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/23 11:43:06 by toferrei          #+#    #+#              #
-#    Updated: 2025/06/27 20:26:43 by toferrei         ###   ########.fr        #
+#    Updated: 2025/07/01 13:15:36 by toferrei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,11 +22,12 @@ OBJECTS		=	$(patsubst %.cpp, $(OBJ_DIR)%.o, $(SOURCE))
 
 CC			=	c++
 CFLAGS		=	-Wall -Wextra -Werror -g -std=c++98
+LFLAGS		=	-lncurses
 
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	@$(CC) $(CFLAGS) $(OBJECTS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJECTS) -o $(NAME) $(LFLAGS)
 	@echo "All files were created"
 
 $(OBJ_DIR)%.o: %.cpp
