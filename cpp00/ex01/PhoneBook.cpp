@@ -32,12 +32,24 @@ PhoneBook::~PhoneBook()
 void PhoneBook::print()
 {
 	int i = 0;
+	std::string ind_str;
+	int ind_int;
 
 	while (i < 7)
 	{
 		contact_array[i].print_contact();
 		i++;
 	}
+	while (std::cin)
+	{
+		std::cout << "";
+		getline(std::cin, ind_str);
+		if (ind_str.size() == 1)
+		{
+			ind_int = 
+		}
+	}
+	
 }
 
 void PhoneBook::move_all_up()
