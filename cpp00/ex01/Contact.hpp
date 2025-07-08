@@ -27,7 +27,9 @@ class Contact
 		bool setcontact();
 		bool getinput(std::string promt, std::string &str, int flag);
 		bool is_input_valid(std::string str, int flag);
-		void print_contact();
+		void print_contact(int index_num);
+		void print_contact_full();
+		std::string print_field(std::string str);
 
 	private:
 

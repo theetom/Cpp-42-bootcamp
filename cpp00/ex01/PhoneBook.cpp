@@ -25,31 +25,49 @@ PhoneBook::~PhoneBook()
 	return ;
 }
 
-//func ADD
-//func SEARCH
-//func EXIT
-
 void PhoneBook::print()
 {
-	int i = 0;
+	int	i = 0;
 	std::string ind_str;
 	int ind_int;
 
-	while (i < 7)
+	if (index == 0)
 	{
-		contact_array[i].print_contact();
+		std::cout << "No contacts were found." << std::endl;
+		return ;
+	}
+	std::cout << "|";
+	std::cout << std::setfill ('-') << std::setw (10);
+	std::cout << "Index";
+	std::cout << "|";
+	std::cout << std::setfill ('-') << std::setw (10);
+	std::cout << "First Name";
+	std::cout << "|";
+	std::cout << std::setfill ('-') << std::setw (10);
+	std::cout << "Last Name";
+	std::cout << "|";
+	std::cout << std::setfill ('-') << std::setw (10);
+	std::cout << "Nickname";
+	std::cout << "|" << std::endl;
+	while (i <= index)
+	{
+		contact_array[i].print_contact(i);
 		i++;
 	}
-	while (std::cin)
+	while (std::cin && ind_str.compare("RETURN"))
 	{
-		std::cout << "";
+		std::cout << "Input index of contact to display: ";
 		getline(std::cin, ind_str);
-		if (ind_str.size() == 1)
+		ind_int = atoi(ind_str.c_str());
+		if (ind_int >= 1 && ind_int <= index)
+			return(contact_array[ind_int - 1].print_contact_full());
+		if (ind_str.compare("RETURN"))
 		{
-			ind_int = 
+			std::cout << "You have " << index << " contacts." << std::endl;
+			std::cout << "Please input a number between 1 and it (" << index << ")" << std::endl;
 		}
 	}
-	
+
 }
 
 void PhoneBook::move_all_up()
@@ -73,10 +91,9 @@ bool PhoneBook::add()
 			index = 7;
 		}
 		contact_array[index] = temp;
-		std::cout << index << std::endl;
 		index++;
-		return 1;
+		return (1);
 	}
 	else
-		return 0;
+		return (0);
 }

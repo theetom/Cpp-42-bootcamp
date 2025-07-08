@@ -14,19 +14,20 @@
 #include "Contact.hpp"
 #include <curses.h>
 #include <csignal>
+#include <limits>
 
 int main()
 {
-	std::cout << "Welcome to my PhoneBook" << std::endl;
+	std::cout << "Welcome to my PhoneBook!" << std::endl;
 	std::string buf;
 	PhoneBook phonebook;
 	signal(SIGINT, SIG_IGN);
 	signal(SIGQUIT, SIG_IGN);
 	while (std::cin && buf.compare("EXIT"))
 	{
-		std::cout << "You may ADD, SEARCH or EXIT" << std::endl;
+		std::cout << "You may type ADD, SEARCH or EXIT in the main menu to do the respective action. \n \
+			And type RETURN while in the sub-menus to interrupt input and return to the main menu." << std::endl;
 		std::getline(std::cin, buf);
-		// buf = buf.substr(0, buf.find(' '));
 		if(!buf.compare("ADD"))
 		{
 			std::cout << "You're trying to add a new contact" << std::endl;
@@ -34,9 +35,7 @@ int main()
 				std::cout << "Some error happened, please try again." << std::endl;
 		}
 		if(!buf.compare("SEARCH"))
-		{
 			phonebook.print();
-		}
 	}
 	return (0);
 }

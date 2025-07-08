@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	main
+NAME		=	PhoneBook
 
 SOURCE		=	Contact.cpp \
 				PhoneBook.cpp \
