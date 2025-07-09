@@ -5,16 +5,17 @@
 #                                                     +:+ +:+         +:+      #
 #    By: etom <etom@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/06/23 11:43:06 by toferrei          #+#    #+#              #
-#    Updated: 2025/07/09 16:33:13 by etom             ###   ########.fr        #
+#    Created: 2025/07/09 07:54:16 by etom              #+#    #+#              #
+#    Updated: 2025/07/09 17:01:12 by etom             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	PhoneBook
+NAME		=	Zombie
 
-SOURCE		=	Contact.cpp \
-				PhoneBook.cpp \
-				main.cpp
+SOURCE		=	main.cpp \
+				newZombie.cpp \
+				randomChump.cpp \
+				Zombie.cpp
 
 OBJ_DIR		=	Objects/
 
@@ -22,16 +23,14 @@ OBJECTS		=	$(patsubst %.cpp, $(OBJ_DIR)%.o, $(SOURCE))
 
 CC			=	c++
 CFLAGS		=	-Wall -Wextra -Werror -g -std=c++98
-# LFLAGS		=	-lncurses
 
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	@$(CC) $(CFLAGS) $(OBJECTS) -o $(NAME) 
-# $(LFLAGS)
+	@$(CC) $(CFLAGS) $(OBJECTS) -o $(NAME)
 	@echo "All files were created"
 
-$(OBJ_DIR)%.o: %.cpp
+$(OBJ_DIR)%.o: %.cpp 
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@
 

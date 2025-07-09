@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toferrei <toferrei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: etom <etom@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 13:40:40 by toferrei          #+#    #+#             */
-/*   Updated: 2025/07/01 17:33:04 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/07/09 16:35:09 by etom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int main()
 	signal(SIGQUIT, SIG_IGN);
 	while (std::cin && buf.compare("EXIT"))
 	{
-		std::cout << "You may type ADD, SEARCH or EXIT in the main menu to do the respective action. \n \
-			And type RETURN while in the sub-menus to interrupt input and return to the main menu." << std::endl;
+		std::cout << "You may type ADD, SEARCH or EXIT in the main menu to do the respective action.\n"
+			"And type RETURN while in the sub-menus to interrupt input and return to the main menu." << std::endl;
 		std::getline(std::cin, buf);
 		if(!buf.compare("ADD"))
 		{
