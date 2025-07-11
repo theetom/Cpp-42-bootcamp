@@ -6,7 +6,7 @@
 /*   By: etom <etom@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 07:57:03 by etom              #+#    #+#             */
-/*   Updated: 2025/07/10 13:01:21 by etom             ###   ########.fr       */
+/*   Updated: 2025/07/11 12:10:42 by etom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,17 @@
 
 int main()
 {
-	Zombie *marc;
-	marc = newZombie("marc");
-	marc->announce();
-	randomChump("yao");
-	delete(marc);
+	int N = 10;
+	int i = 0;
+
+	Zombie *zombies = zombieHorde(N, "joao");
+
+    while (i < N)
+    {
+		std::cout << "Zombie no " << i + 1 << " out of " << N << " : ";
+        zombies[i].announce();
+        i++;
+    }
+	delete[]zombies;
 	return 0;
 }
