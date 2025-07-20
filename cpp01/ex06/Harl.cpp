@@ -6,7 +6,7 @@
 /*   By: etom <etom@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 12:35:00 by etom              #+#    #+#             */
-/*   Updated: 2025/07/18 10:52:58 by etom             ###   ########.fr       */
+/*   Updated: 2025/07/18 11:43:28 by etom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,28 @@ void Harl::complain(std::string level)
 {
 	int i = 0;
 	std::string s[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-	void (Harl::*ptr[5])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error, &Harl::defaultComplain};
+	// void (Harl::*ptr)();
+	// void (Harl::*ptr[5])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error, &Harl::defaultComplain};
 
 	while (i < 4 && s[i].compare(level) != 0)
 		i++;
-	(this->*ptr[i])();
+	switch (i)
+	{
+		case 0:
+			(this->Harl::debug());
+			__attribute__ ((fallthrough));
+		case 1:
+			(this->Harl::info());
+			__attribute__ ((fallthrough));
+		case 2:
+			(this->Harl::warning());
+			__attribute__ ((fallthrough));
+		case 3:
+			(this->Harl::error());
+			__attribute__ ((fallthrough));
+		default :
+			(this->Harl::defaultComplain());
+	}
 
 
 

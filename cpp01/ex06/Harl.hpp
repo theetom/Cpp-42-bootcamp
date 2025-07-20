@@ -1,22 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etom <etom@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/17 14:23:22 by etom              #+#    #+#             */
-/*   Updated: 2025/07/18 11:05:09 by etom             ###   ########.fr       */
+/*   Created: 2025/07/17 10:41:30 by etom              #+#    #+#             */
+/*   Updated: 2025/07/17 16:13:09 by etom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
+#ifndef HARL_HPP
 
-int main(int argc, char **argv)
+# define HARL_HPP
+
+#include <string>
+#include <iostream>
+
+class Harl
 {
-	Harl harl;
-	if (argc == 2)
-		harl.complain(argv[1]);
-	return (0);
+	private:
+		void debug( void );
+		void info( void );
+		void warning( void );
+		void error( void );
+		void defaultComplain( void );
 	
-}
+	public:
+		Harl();
+		~Harl();
+		void complain( std::string level );
+
+};
+
+#endif
