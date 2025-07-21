@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 13:43:55 by toferrei          #+#    #+#             */
-/*   Updated: 2025/07/01 17:32:54 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/07/21 14:39:55 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class PhoneBook
 		PhoneBook();
 		~PhoneBook();
 		bool	add();
-		void	move_all_up();
+		void	moveAllUp();
 		void	print();
 
 };

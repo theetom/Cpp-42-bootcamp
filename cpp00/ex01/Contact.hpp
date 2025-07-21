@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 13:38:34 by toferrei          #+#    #+#             */
-/*   Updated: 2025/07/01 18:22:46 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/07/21 14:39:44 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <string>
 # include <iostream>
 # include <algorithm>
+#include <iomanip>
 
 class Contact
 {
@@ -24,12 +25,12 @@ class Contact
 
 		Contact();
 		~Contact();
-		bool setcontact();
+		bool setContact();
 		bool getinput(std::string promt, std::string &str, int flag);
-		bool is_input_valid(std::string str, int flag);
-		void print_contact(int index_num);
-		void print_contact_full();
-		std::string print_field(std::string str);
+		bool isInputValid(std::string str, int flag);
+		void printContact(int index_num);
+		void printContactFull();
+		std::string printField(std::string str);
 
 	private:
 

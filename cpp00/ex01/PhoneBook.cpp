@@ -6,12 +6,11 @@
 /*   By: toferrei <toferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 13:38:30 by toferrei          #+#    #+#             */
-/*   Updated: 2025/07/01 18:10:00 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/07/21 15:18:53 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
-#include <cstdio>
 
 PhoneBook::PhoneBook()
 {
@@ -51,7 +50,7 @@ void PhoneBook::print()
 	std::cout << "|" << std::endl;
 	while (i <= index)
 	{
-		contact_array[i].print_contact(i);
+		contact_array[i].printContact(i);
 		i++;
 	}
 	while (std::cin && ind_str.compare("RETURN"))
@@ -60,7 +59,7 @@ void PhoneBook::print()
 		getline(std::cin, ind_str);
 		ind_int = atoi(ind_str.c_str());
 		if (ind_int >= 1 && ind_int <= index)
-			return(contact_array[ind_int - 1].print_contact_full());
+			return(contact_array[ind_int - 1].printContactFull());
 		if (ind_str.compare("RETURN"))
 		{
 			std::cout << "You have " << index << " contacts." << std::endl;
@@ -70,7 +69,7 @@ void PhoneBook::print()
 
 }
 
-void PhoneBook::move_all_up()
+void PhoneBook::moveAllUp()
 {
 	int i = 0;
 	while (i < 7)
@@ -83,11 +82,11 @@ void PhoneBook::move_all_up()
 bool PhoneBook::add()
 {
 	Contact temp;
-	if (temp.setcontact())
+	if (temp.setContact())
 	{
 		if (index >= 8)
 		{
-			move_all_up();
+			moveAllUp();
 			index = 7;
 		}
 		contact_array[index] = temp;
