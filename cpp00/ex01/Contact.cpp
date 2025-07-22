@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 13:35:45 by toferrei          #+#    #+#             */
-/*   Updated: 2025/07/21 15:24:22 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/07/22 12:54:58 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,28 +62,28 @@ void Contact::printContact(int index_num)
 	std::cout << std::endl;
 }
 
-inline bool isNotAlpha(char c)
+inline bool isNotAlphaOrSpace(char c)
 {
 	return !(isalpha(c) || (c == ' '));
 }
 
-inline bool isNotAlnumOrPunc(char c)
+inline bool isNotAlnumSpaceOrPunc(char c)
 {
 	return !(isalnum(c) || (c == ' ') || ispunct(c));
 }
 
-static inline bool isNotDigit(char c)
+inline bool isNotDigitOrPlus(char c)
 {
-	return !(isdigit(c));
+	return !(isdigit(c) || (c == '+'));
 }
 
-bool Contact::isInputValid(std::string str, int flag)
+int Contact::isInputValid(std::string str, int flag)
 {
 	if (find_if(str.begin(), str.end(), isascii) == str.end())
 		return (0);
-	if ((flag == 1 && find_if(str.begin(), str.end(), isNotAlnumOrPunc) == str.end())
-		|| (flag == 2 && find_if(str.begin(), str.end(), isNotDigit) == str.end())
-		|| (flag == 0 && find_if(str.begin(), str.end(), isNotAlpha) == str.end()))
+	if ((flag == 1 && find_if(str.begin(), str.end(), isNotAlnumSpaceOrPunc) == str.end())
+		|| (flag == 2 && find_if(str.begin(), str.end(), isNotDigitOrPlus) == str.end())
+		|| (flag == 0 && find_if(str.begin(), str.end(), isNotAlphaOrSpace) == str.end()))
 		return (1);
 	return (0);
 }
@@ -117,7 +117,7 @@ bool Contact::setContact()
 		return (0);
 	if (!getinput("Enter your darkest secret :", DarkestSecret, 1))
 		return (0);
-	if (!getinput("Enter your phone number (for international numbers use \"00\" instead of \"+\") :", PhoneNumber, 2))
+	if (!getinput("Enter your phone number :", PhoneNumber, 2))
 		return (0);
 	return (1);
 }
