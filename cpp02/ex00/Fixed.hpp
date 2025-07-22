@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etom <etom@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: toferrei <toferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 18:24:22 by etom              #+#    #+#             */
-/*   Updated: 2025/07/18 18:29:07 by etom             ###   ########.fr       */
+/*   Updated: 2025/07/22 15:58:58 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,25 @@
 
 # define FIXED_HPP
 
+#include <iostream>
+
 class Fixed
 {
+	private:
+		int _value;
+		static const int _literal = 8;
+
+	public:
+	  
+		Fixed();
+		~Fixed();
+		Fixed( const Fixed &Fixed );
+		Fixed &operator=( const Fixed &Fixed );
+
+		int getRawBits( void ) const;
+		void setRawBits( int const raw );
 	
 
 };
 
 #endif
-
-
-1. What purpose do classes serve?
-
-D. all of the above
-
-2. Which is not a protection level provided by classes in C++?
-
-B. hidden
-
-
-
-3. What value must a destructor return?
-
-D. Destructors do not return a value.
-
-4. Which of the following is a valid class declaration?
-A. class A { int x; };
-
-
-5. Which functions will every class contain?
-
-D. Both a constructor and a destructor

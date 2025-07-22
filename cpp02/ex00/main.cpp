@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etom <etom@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: toferrei <toferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 18:23:07 by etom              #+#    #+#             */
-/*   Updated: 2025/07/18 18:24:46 by etom             ###   ########.fr       */
+/*   Updated: 2025/07/22 15:57:13 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include "Fixed.hpp"
 
 int main( void ) {
