@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etom <etom@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: toferrei <toferrei42@student.42lisboa.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 13:40:40 by toferrei          #+#    #+#             */
-/*   Updated: 2025/07/09 16:35:09 by etom             ###   ########.fr       */
+/*   Updated: 2025/07/24 17:07:24 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main()
 {
 	std::cout << "Welcome to my PhoneBook!" << std::endl;
 	std::string buf;
-	PhoneBook phonebook;
+	PhoneBook phoneBook;
 	signal(SIGINT, SIG_IGN);
 	signal(SIGQUIT, SIG_IGN);
 	while (std::cin && buf.compare("EXIT"))
@@ -31,11 +31,10 @@ int main()
 		if(!buf.compare("ADD"))
 		{
 			std::cout << "You're trying to add a new contact" << std::endl;
-			if (phonebook.add() == 0)
-				std::cout << "Some error happened, please try again." << std::endl;
+			phoneBook.add();
 		}
 		if(!buf.compare("SEARCH"))
-			phonebook.print();
+			phoneBook.print();
 	}
 	return (0);
 }

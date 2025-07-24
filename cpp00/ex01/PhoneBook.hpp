@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 13:43:55 by toferrei          #+#    #+#             */
-/*   Updated: 2025/07/22 12:38:41 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/07/23 14:41:56 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ class PhoneBook
 {
 
 	private:
-		Contact contact_array[8];
-		int		contacts_count;
+		Contact contactArray[8];
+		int		contactsCount;
 
 	public:
 

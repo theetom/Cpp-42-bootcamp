@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toferrei <toferrei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: toferrei <toferrei42@student.42lisboa.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 13:35:45 by toferrei          #+#    #+#             */
-/*   Updated: 2025/07/22 12:54:58 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/07/24 14:57:04 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ Contact::~Contact()
 
 void Contact::printContactFull()
 {
-	std::cout << "First Name:" << FirstName << std::endl;
-	std::cout << "Last Name:" << LastName << std::endl;
-	std::cout << "Nickname:" << Nickname << std::endl;
-	std::cout << "Phone number:" << PhoneNumber << std::endl;
-	std::cout << "Darkest Secret:" << DarkestSecret << std::endl;
+	std::cout << "First Name:" << firstName << std::endl;
+	std::cout << "Last Name:" << lastName << std::endl;
+	std::cout << "Nickname:" << nickname << std::endl;
+	std::cout << "Phone number:" << phoneNumber << std::endl;
+	std::cout << "Darkest Secret:" << darkestSecret << std::endl;
 }
 
 std::string Contact::printField(std::string str)
@@ -42,22 +42,22 @@ std::string Contact::printField(std::string str)
 	return(temp);
 }
 
-void Contact::printContact(int index_num)
+void Contact::printContact(int indexNum)
 {
-	if (FirstName.empty())
+	if (firstName.empty())
 		return ;
 	std::cout << "|";
 	std::cout << std::setfill ('-') << std::setw (10);
-	std::cout << ++index_num;
+	std::cout << ++indexNum;
 	std::cout << "|";
 	std::cout << std::setfill ('-') << std::setw (10);
-	std::cout << printField(FirstName);
+	std::cout << printField(firstName);
 	std::cout << "|";
 	std::cout << std::setfill ('-') << std::setw (10);
-	std::cout << printField(LastName);
+	std::cout << printField(lastName);
 	std::cout << "|";
 	std::cout << std::setfill ('-') << std::setw (10);
-	std::cout << printField(Nickname);
+	std::cout << printField(nickname);
 	std::cout << "|";
 	std::cout << std::endl;
 }
@@ -69,7 +69,7 @@ inline bool isNotAlphaOrSpace(char c)
 
 inline bool isNotAlnumSpaceOrPunc(char c)
 {
-	return !(isalnum(c) || (c == ' ') || ispunct(c));
+	return !(isalnum(c) || (c == ' ') || (c == '!') || (c == ',') || (c == '.'));
 }
 
 inline bool isNotDigitOrPlus(char c)
@@ -77,14 +77,26 @@ inline bool isNotDigitOrPlus(char c)
 	return !(isdigit(c) || (c == '+'));
 }
 
-int Contact::isInputValid(std::string str, int flag)
+int Contact::isInputInvalid(std::string str, int flag) // returns 0 for valid
 {
-	if (find_if(str.begin(), str.end(), isascii) == str.end())
+	/* if (find_if(str.begin(), str.end(), isascii) == str.end())
 		return (0);
 	if ((flag == 1 && find_if(str.begin(), str.end(), isNotAlnumSpaceOrPunc) == str.end())
 		|| (flag == 2 && find_if(str.begin(), str.end(), isNotDigitOrPlus) == str.end())
 		|| (flag == 0 && find_if(str.begin(), str.end(), isNotAlphaOrSpace) == str.end()))
 		return (1);
+	return (0); */ // not possible solution because of need for <algorithm>
+	int n = 0;
+	while (str[n])
+	{
+		if (flag == 1 && isNotAlphaOrSpace(str[n]))
+			return (1);
+		if (flag == 2 && isNotAlnumSpaceOrPunc(str[n]))
+			return (2);
+		if (flag == 3 && isNotDigitOrPlus(str[n]))
+			return (3);
+		n++;
+	}
 	return (0);
 }
 
@@ -96,28 +108,34 @@ bool Contact::getinput(std::string prompt, std::string &str, int flag)
 	{
 		std::cout << prompt;
 		getline(std::cin, buf);
-		if (!buf.empty() && isInputValid(buf, flag) && buf.compare("RETURN"))
+		if (!buf.empty() && !isInputInvalid(buf, flag) && buf.compare("RETURN"))
 		{
 			str = buf;
 			return (1);
 		}
-		else if (!isInputValid(buf, flag))
-			std::cout << "Invalid input: no empty input or try without accentuated characters" << std::endl;
+		else if (!buf.empty() && isInputInvalid(buf, flag) == 1)
+			std::cout << "Invalid input: only unaccented characters and space." << std::endl;
+		else if (!buf.empty() && isInputInvalid(buf, flag) == 2)
+			std::cout << "Invalid input: only unaccented characters, space, numbers and punctuation." << std::endl;
+		else if (!buf.empty() && isInputInvalid(buf, flag) == 3)
+			std::cout << "Invalid input: only numbers and '+'." << std::endl;
+		else if (buf.empty())
+			std::cout << "Invalid input: no empty input." << std::endl;
 	}
 	return (0);
 }
 
 bool Contact::setContact()
 {
-	if (!getinput("Enter your first name :", FirstName, 0))
+	if (!getinput("Enter your first name :", firstName, 1))
 		return (0);
-	if (!getinput("Enter your last name :", LastName, 0))
+	if (!getinput("Enter your last name :", lastName, 1))
 		return (0);
-	if (!getinput("Enter your nickname :", Nickname, 1))
+	if (!getinput("Enter your nickname :", nickname, 2))
 		return (0);
-	if (!getinput("Enter your darkest secret :", DarkestSecret, 1))
+	if (!getinput("Enter your darkest secret :", darkestSecret, 2))
 		return (0);
-	if (!getinput("Enter your phone number :", PhoneNumber, 2))
+	if (!getinput("Enter your phone number :", phoneNumber, 3))
 		return (0);
 	return (1);
 }

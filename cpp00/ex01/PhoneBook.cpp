@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 13:38:30 by toferrei          #+#    #+#             */
-/*   Updated: 2025/07/22 12:40:54 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/07/23 14:51:18 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 PhoneBook::PhoneBook()
 {
-	contacts_count = 0;
+	contactsCount = 0;
 
 	return ;
 }
@@ -44,31 +44,31 @@ void PhoneBook::printHeader()
 void PhoneBook::print()
 {
 	int	i = 0;
-	std::string ind_str;
-	int ind_int;
+	std::string indStr;
+	int indInt;
 
-	if (contacts_count == 0)
+	if (contactsCount == 0)
 	{
 		std::cout << "No contacts were found." << std::endl;
 		return ;
 	}
 	printHeader();
-	while (i < contacts_count)
+	while (i < contactsCount)
 	{
-		contact_array[i].printContact(i);
+		contactArray[i].printContact(i);
 		i++;
 	}
-	while (std::cin && ind_str.compare("RETURN"))
+	while (std::cin && indStr.compare("RETURN"))
 	{
 		std::cout << "Input index of contact to display: ";
-		getline(std::cin, ind_str);
-		ind_int = atoi(ind_str.c_str());
-		if (ind_int >= 1 && ind_int <= contacts_count)
-			return(contact_array[ind_int - 1].printContactFull());
-		if (ind_str.compare("RETURN"))
+		getline(std::cin, indStr);
+		indInt = atoi(indStr.c_str());
+		if (indInt >= 1 && indInt <= contactsCount)
+			return(contactArray[indInt - 1].printContactFull());
+		if (indStr.compare("RETURN"))
 		{
-			std::cout << "You have " << contacts_count << " contacts." << std::endl;
-			std::cout << "Please input a number from 1 and to the amount of contacts in your PhoneBook (" << contacts_count << ")" << std::endl;
+			std::cout << "You have " << contactsCount << " contacts." << std::endl;
+			std::cout << "Please input a number from 1 and to the amount of contacts in your PhoneBook (" << contactsCount << ")" << std::endl;
 		}
 	}
 
@@ -79,7 +79,7 @@ void PhoneBook::moveAllUp()
 	int i = 0;
 	while (i < 7)
 	{
-		contact_array[i] = contact_array[i + 1];
+		contactArray[i] = contactArray[i + 1];
 		i++;
 	}
 }
@@ -89,13 +89,13 @@ bool PhoneBook::add()
 	Contact temp;
 	if (temp.setContact())
 	{
-		if (contacts_count > 7)
+		if (contactsCount > 7)
 		{
 			moveAllUp();
-			contacts_count = 7;
+			contactsCount = 7;
 		}
-		contact_array[contacts_count] = temp;
-		contacts_count++;
+		contactArray[contactsCount] = temp;
+		contactsCount++;
 		return (1);
 	}
 	else

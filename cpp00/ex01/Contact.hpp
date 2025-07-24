@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toferrei <toferrei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: toferrei <toferrei42@student.42lisboa.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 13:38:34 by toferrei          #+#    #+#             */
-/*   Updated: 2025/07/22 12:32:10 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/07/24 14:38:13 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <string>
 # include <iostream>
-# include <algorithm>
+// # include <algorithm>
 #include <iomanip>
 
 class Contact
@@ -27,18 +27,18 @@ class Contact
 		~Contact();
 		bool setContact();
 		bool getinput(std::string promt, std::string &str, int flag);
-		int isInputValid(std::string str, int flag);
+		int isInputInvalid(std::string str, int flag);
 		void printContact(int index_num);
 		void printContactFull();
 		std::string printField(std::string str);
 
 	private:
 
-		std::string	FirstName;
-		std::string	LastName;
-		std::string	Nickname;
-		std::string	DarkestSecret;
-		std::string PhoneNumber;
+		std::string	firstName;
+		std::string	lastName;
+		std::string	nickname;
+		std::string	darkestSecret;
+		std::string phoneNumber;
 };
 
 #endif
