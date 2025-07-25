@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: etom <etom@student.42.fr>                  +#+  +:+       +#+         #
+#    By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/23 11:43:06 by toferrei          #+#    #+#              #
-#    Updated: 2025/07/09 16:33:13 by etom             ###   ########.fr        #
+#    Updated: 2025/07/25 10:18:50 by toferrei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,20 +20,20 @@ OBJ_DIR		=	Objects/
 
 OBJECTS		=	$(patsubst %.cpp, $(OBJ_DIR)%.o, $(SOURCE))
 
-CC			=	c++
-CFLAGS		=	-Wall -Wextra -Werror -g -std=c++98
+CXX			=	c++
+CPPFLAGS		=	-Wall -Wextra -Werror -g -std=c++98
 # LFLAGS		=	-lncurses
 
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	@$(CC) $(CFLAGS) $(OBJECTS) -o $(NAME) 
+	@$(CXX) $(CPPFLAGS) $(OBJECTS) -o $(NAME) 
 # $(LFLAGS)
 	@echo "All files were created"
 
 $(OBJ_DIR)%.o: %.cpp
 	@mkdir -p $(dir $@)
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CXX) $(CPPFLAGS) -c $< -o $@
 
 clean:
 	@rm -f $(OBJECTS)
