@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 13:35:45 by toferrei          #+#    #+#             */
-/*   Updated: 2025/07/25 10:18:42 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/08/12 16:39:18 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ Contact::~Contact()
 
 void Contact::printContactFull()
 {
-	std::cout << "First Name:" << firstName << std::endl;
-	std::cout << "Last Name:" << lastName << std::endl;
-	std::cout << "Nickname:" << nickname << std::endl;
-	std::cout << "Phone number:" << phoneNumber << std::endl;
-	std::cout << "Darkest Secret:" << darkestSecret << std::endl;
+	std::cout << "First Name:" << _firstName << std::endl;
+	std::cout << "Last Name:" << _lastName << std::endl;
+	std::cout << "Nickname:" << _nickname << std::endl;
+	std::cout << "Phone number:" << _phoneNumber << std::endl;
+	std::cout << "Darkest Secret:" << _darkestSecret << std::endl;
 }
 
 std::string Contact::printField(std::string str)
@@ -44,20 +44,20 @@ std::string Contact::printField(std::string str)
 
 void Contact::printContact(int indexNum)
 {
-	if (firstName.empty())
+	if (_firstName.empty())
 		return ;
 	std::cout << "|";
 	std::cout << std::setfill ('-') << std::setw (10);
 	std::cout << ++indexNum;
 	std::cout << "|";
 	std::cout << std::setfill ('-') << std::setw (10);
-	std::cout << printField(firstName);
+	std::cout << printField(_firstName);
 	std::cout << "|";
 	std::cout << std::setfill ('-') << std::setw (10);
-	std::cout << printField(lastName);
+	std::cout << printField(_lastName);
 	std::cout << "|";
 	std::cout << std::setfill ('-') << std::setw (10);
-	std::cout << printField(nickname);
+	std::cout << printField(_nickname);
 	std::cout << "|";
 	std::cout << std::endl;
 }
@@ -127,15 +127,15 @@ bool Contact::getinput(std::string prompt, std::string &str, int flag)
 
 bool Contact::setContact()
 {
-	if (!getinput("Enter your first name :", firstName, 1))
+	if (!getinput("Enter your first name :", _firstName, 1))
 		return (0);
-	if (!getinput("Enter your last name :", lastName, 1))
+	if (!getinput("Enter your last name :", _lastName, 1))
 		return (0);
-	if (!getinput("Enter your nickname :", nickname, 2))
+	if (!getinput("Enter your nickname :", _nickname, 2))
 		return (0);
-	if (!getinput("Enter your darkest secret :", darkestSecret, 2))
+	if (!getinput("Enter your darkest secret :", _darkestSecret, 2))
 		return (0);
-	if (!getinput("Enter your phone number :", phoneNumber, 3))
+	if (!getinput("Enter your phone number :", _phoneNumber, 3))
 		return (0);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 13:43:55 by toferrei          #+#    #+#             */
-/*   Updated: 2025/07/25 10:18:57 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/08/12 16:43:22 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,18 @@
 
 class PhoneBook
 {
-
 	private:
-		Contact contactArray[8];
+		Contact	contactArray[8];
 		int		contactsCount;
+		void	moveAllUp();
+		void	printHeader();
 
 	public:
 
 		PhoneBook();
 		~PhoneBook();
 		bool	add();
-		void	moveAllUp();
 		void	print();
-		void	printHeader();
 
 };
 

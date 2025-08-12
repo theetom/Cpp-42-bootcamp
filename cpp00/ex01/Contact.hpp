@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 13:38:34 by toferrei          #+#    #+#             */
-/*   Updated: 2025/07/25 10:18:45 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/08/12 16:42:23 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,29 @@
 # include <stdlib.h>
 # include <string>
 # include <iostream>
-// # include <algorithm>
 #include <iomanip>
 
 class Contact
 {
+	private:
+		
+		std::string printField(std::string str);
+		bool getinput(std::string promt, std::string &str, int flag);
+		int isInputInvalid(std::string str, int flag);
+		std::string	_firstName;
+		std::string	_lastName;
+		std::string	_nickname;
+		std::string	_darkestSecret;
+		std::string _phoneNumber;
+
 	public:
 
 		Contact();
 		~Contact();
 		bool setContact();
-		bool getinput(std::string promt, std::string &str, int flag);
-		int isInputInvalid(std::string str, int flag);
 		void printContact(int index_num);
 		void printContactFull();
-		std::string printField(std::string str);
 
-	private:
-
-		std::string	firstName;
-		std::string	lastName;
-		std::string	nickname;
-		std::string	darkestSecret;
-		std::string phoneNumber;
 };
 
 #endif
