@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 10:48:09 by toferrei          #+#    #+#             */
-/*   Updated: 2025/07/25 12:18:11 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/08/11 16:00:29 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ class Fixed
         Fixed(const Fixed& other);
         Fixed &operator=(const Fixed &other);
 		Fixed &operator<<(const Fixed &other);
-		Fixed &incrementor++(const Fixed &other);
         ~Fixed();
 
 		float	toFloat( void ) const;
@@ -34,4 +33,4 @@ class Fixed
 };
 
 #endif
-varivel++
+// varivel++

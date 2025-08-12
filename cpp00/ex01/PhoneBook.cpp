@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 13:38:30 by toferrei          #+#    #+#             */
-/*   Updated: 2025/08/12 16:43:24 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/08/12 16:44:13 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 PhoneBook::PhoneBook()
 {
-	contactsCount = 0;
+	_contactsCount = 0;
 
 	return ;
 }
@@ -47,15 +47,15 @@ void PhoneBook::print()
 	std::string indStr;
 	int indInt;
 
-	if (contactsCount == 0)
+	if (_contactsCount == 0)
 	{
 		std::cout << "No contacts were found." << std::endl;
 		return ;
 	}
 	printHeader();
-	while (i < contactsCount)
+	while (i < _contactsCount)
 	{
-		contactArray[i].printContact(i);
+		_contactArray[i].printContact(i);
 		i++;
 	}
 	while (std::cin && indStr.compare("RETURN"))
@@ -63,12 +63,12 @@ void PhoneBook::print()
 		std::cout << "Input index of contact to display: ";
 		getline(std::cin, indStr);
 		indInt = atoi(indStr.c_str());
-		if (indInt >= 1 && indInt <= contactsCount)
-			return(contactArray[indInt - 1].printContactFull());
+		if (indInt >= 1 && indInt <= _contactsCount)
+			return(_contactArray[indInt - 1].printContactFull());
 		if (indStr.compare("RETURN"))
 		{
-			std::cout << "You have " << contactsCount << " contacts." << std::endl;
-			std::cout << "Please input a number from 1 and to the amount of contacts in your PhoneBook (" << contactsCount << ")" << std::endl;
+			std::cout << "You have " << _contactsCount << " contacts." << std::endl;
+			std::cout << "Please input a number from 1 and to the amount of contacts in your PhoneBook (" << _contactsCount << ")" << std::endl;
 		}
 	}
 
@@ -79,7 +79,7 @@ void PhoneBook::moveAllUp()
 	int i = 0;
 	while (i < 7)
 	{
-		contactArray[i] = contactArray[i + 1];
+		_contactArray[i] = _contactArray[i + 1];
 		i++;
 	}
 }
@@ -89,13 +89,13 @@ bool PhoneBook::add()
 	Contact temp;
 	if (temp.setContact())
 	{
-		if (contactsCount > 7)
+		if (_contactsCount > 7)
 		{
 			moveAllUp();
-			contactsCount = 7;
+			_contactsCount = 7;
 		}
-		contactArray[contactsCount] = temp;
-		contactsCount++;
+		_contactArray[_contactsCount] = temp;
+		_contactsCount++;
 		return (1);
 	}
 	else

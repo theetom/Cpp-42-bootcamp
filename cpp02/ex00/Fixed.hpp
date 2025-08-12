@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 18:24:22 by etom              #+#    #+#             */
-/*   Updated: 2025/07/25 10:20:56 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/08/12 16:42:34 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ class Fixed
 
 		int getRawBits( void ) const;
 		void setRawBits( int const raw );
-	
-
 };
 
 #endif
