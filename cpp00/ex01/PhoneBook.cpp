@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 13:38:30 by toferrei          #+#    #+#             */
-/*   Updated: 2025/08/12 16:44:13 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/08/14 12:39:12 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ PhoneBook::~PhoneBook()
 	return ;
 }
 
-void PhoneBook::printHeader()
+void PhoneBook::_printHeader()
 {
 	std::cout << "|";
 	std::cout << std::setfill ('-') << std::setw (10);
@@ -52,7 +52,7 @@ void PhoneBook::print()
 		std::cout << "No contacts were found." << std::endl;
 		return ;
 	}
-	printHeader();
+	_printHeader();
 	while (i < _contactsCount)
 	{
 		_contactArray[i].printContact(i);
@@ -74,7 +74,7 @@ void PhoneBook::print()
 
 }
 
-void PhoneBook::moveAllUp()
+void PhoneBook::_moveAllUp()
 {
 	int i = 0;
 	while (i < 7)
@@ -91,7 +91,7 @@ bool PhoneBook::add()
 	{
 		if (_contactsCount > 7)
 		{
-			moveAllUp();
+			_moveAllUp();
 			_contactsCount = 7;
 		}
 		_contactArray[_contactsCount] = temp;

@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 13:35:45 by toferrei          #+#    #+#             */
-/*   Updated: 2025/08/12 16:39:18 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/08/14 12:39:36 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void Contact::printContactFull()
 	std::cout << "Darkest Secret:" << _darkestSecret << std::endl;
 }
 
-std::string Contact::printField(std::string str)
+std::string Contact::_printField(std::string str)
 {
 	std::string temp = str;
 	if (str.size() > 10)
@@ -51,13 +51,13 @@ void Contact::printContact(int indexNum)
 	std::cout << ++indexNum;
 	std::cout << "|";
 	std::cout << std::setfill ('-') << std::setw (10);
-	std::cout << printField(_firstName);
+	std::cout << _printField(_firstName);
 	std::cout << "|";
 	std::cout << std::setfill ('-') << std::setw (10);
-	std::cout << printField(_lastName);
+	std::cout << _printField(_lastName);
 	std::cout << "|";
 	std::cout << std::setfill ('-') << std::setw (10);
-	std::cout << printField(_nickname);
+	std::cout << _printField(_nickname);
 	std::cout << "|";
 	std::cout << std::endl;
 }
@@ -77,7 +77,7 @@ inline bool isNotDigitOrPlus(char c)
 	return !(isdigit(c) || (c == '+'));
 }
 
-int Contact::isInputInvalid(std::string str, int flag) // returns 0 for valid
+int Contact::_isInputInvalid(std::string str, int flag) // returns 0 for valid
 {
 	/* if (find_if(str.begin(), str.end(), isascii) == str.end())
 		return (0);
@@ -100,7 +100,7 @@ int Contact::isInputInvalid(std::string str, int flag) // returns 0 for valid
 	return (0);
 }
 
-bool Contact::getinput(std::string prompt, std::string &str, int flag)
+bool Contact::_getinput(std::string prompt, std::string &str, int flag)
 {
 	std::string buf;
 
@@ -108,16 +108,16 @@ bool Contact::getinput(std::string prompt, std::string &str, int flag)
 	{
 		std::cout << prompt;
 		getline(std::cin, buf);
-		if (!buf.empty() && !isInputInvalid(buf, flag) && buf.compare("RETURN"))
+		if (!buf.empty() && !_isInputInvalid(buf, flag) && buf.compare("RETURN"))
 		{
 			str = buf;
 			return (1);
 		}
-		else if (!buf.empty() && isInputInvalid(buf, flag) == 1)
+		else if (!buf.empty() && _isInputInvalid(buf, flag) == 1)
 			std::cout << "Invalid input: only unaccented characters and space." << std::endl;
-		else if (!buf.empty() && isInputInvalid(buf, flag) == 2)
+		else if (!buf.empty() && _isInputInvalid(buf, flag) == 2)
 			std::cout << "Invalid input: only unaccented characters, space, numbers and punctuation." << std::endl;
-		else if (!buf.empty() && isInputInvalid(buf, flag) == 3)
+		else if (!buf.empty() && _isInputInvalid(buf, flag) == 3)
 			std::cout << "Invalid input: only numbers and '+'." << std::endl;
 		else if (buf.empty())
 			std::cout << "Invalid input: no empty input." << std::endl;
@@ -127,15 +127,15 @@ bool Contact::getinput(std::string prompt, std::string &str, int flag)
 
 bool Contact::setContact()
 {
-	if (!getinput("Enter your first name :", _firstName, 1))
+	if (!_getinput("Enter your first name :", _firstName, 1))
 		return (0);
-	if (!getinput("Enter your last name :", _lastName, 1))
+	if (!_getinput("Enter your last name :", _lastName, 1))
 		return (0);
-	if (!getinput("Enter your nickname :", _nickname, 2))
+	if (!_getinput("Enter your nickname :", _nickname, 2))
 		return (0);
-	if (!getinput("Enter your darkest secret :", _darkestSecret, 2))
+	if (!_getinput("Enter your darkest secret :", _darkestSecret, 2))
 		return (0);
-	if (!getinput("Enter your phone number :", _phoneNumber, 3))
+	if (!_getinput("Enter your phone number :", _phoneNumber, 3))
 		return (0);
 	return (1);
 }

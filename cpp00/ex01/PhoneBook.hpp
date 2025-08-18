@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 13:43:55 by toferrei          #+#    #+#             */
-/*   Updated: 2025/08/12 16:44:13 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/08/14 12:39:12 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ class PhoneBook
 	private:
 		Contact	_contactArray[8];
 		int		_contactsCount;
-		void	moveAllUp();
-		void	printHeader();
+		void	_moveAllUp();
+		void	_printHeader();
 
 	public:
 
