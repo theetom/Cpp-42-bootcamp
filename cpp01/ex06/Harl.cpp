@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 12:35:00 by etom              #+#    #+#             */
-/*   Updated: 2025/08/18 18:37:25 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/08/18 18:44:10 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,6 @@ void Harl::complain(std::string level)
 {
 	int i = 0;
 	std::string s[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-	// void (Harl::*ptr)();
-	// void (Harl::*ptr[5])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error, &Harl::defaultComplain};
-
 	while (i < 4 && s[i].compare(level) != 0)
 		i++;
 	switch (i)
@@ -77,29 +74,4 @@ void Harl::complain(std::string level)
 		default :
 			(this->Harl::_defaultComplain());
 	}
-
-
-
-	
-/* 	// Another possible solution
-	// (not used cause it felt like cheating since exercice asked for no if trees and this is basically a bunch of ifs)
-
-	void (Harl::*ptr)();
-	ptr = &Harl::defaultComplain;
-
-	(!level.compare("DEBUG") && (ptr = &Harl::debug));
-	(!level.compare("INFO") && (ptr = &Harl::info));
-	(!level.compare("WARNING") && (ptr = &Harl::warning));
-	(!level.compare("ERROR") && (ptr = &Harl::error)); 
-	(this->*ptr)();
-	
-*/
-
-
-	
-
-
-
-
-
 }
