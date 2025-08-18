@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/17 10:41:30 by etom              #+#    #+#             */
-/*   Updated: 2025/07/25 10:20:31 by toferrei         ###   ########.fr       */
+/*   Created: 2025/08/18 18:17:49 by toferrei          #+#    #+#             */
+/*   Updated: 2025/08/18 18:19:24 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@
 class Harl
 {
 	private:
-		void debug( void );
-		void info( void );
-		void warning( void );
-		void error( void );
-		void defaultComplain( void );
+		void _debug( void );
+		void _info( void );
+		void _warning( void );
+		void _error( void );
+		void _defaultComplain( void );
 	
 	public:
 		Harl();

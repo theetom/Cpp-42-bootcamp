@@ -5,15 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/11 14:00:40 by etom              #+#    #+#             */
-/*   Updated: 2025/07/25 10:20:03 by toferrei         ###   ########.fr       */
+/*   Created: 2025/08/18 14:57:05 by toferrei          #+#    #+#             */
+/*   Updated: 2025/08/18 17:27:59 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WEAPON_HPP
 # define WEAPON_HPP
 
-# include <string>
+#include <string>
 
 class Weapon
 {
@@ -21,12 +21,11 @@ class Weapon
 		std::string _type;
 
 	public:
-		Weapon(std::string type);
 		Weapon();
+		Weapon(std::string weapon);
 		~Weapon();
 		const std::string &getType();
-		void setType(std::string new_value);
-		
+		void setType(std::string newWeapon);
 };
 
 #endif

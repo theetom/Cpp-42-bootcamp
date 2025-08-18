@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/11 14:00:38 by etom              #+#    #+#             */
-/*   Updated: 2025/07/25 10:20:00 by toferrei         ###   ########.fr       */
+/*   Created: 2025/08/18 14:56:39 by toferrei          #+#    #+#             */
+/*   Updated: 2025/08/18 17:35:18 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,22 @@ Weapon::Weapon()
 
 }
 
-Weapon::Weapon(std::string type)//: _type(type)
+Weapon::Weapon(std::string weapon):_type(weapon)
 {
-	_type = type;
+
 }
 
 Weapon::~Weapon()
 {
+
 }
 
-const std::string& Weapon::getType()
+const std::string &Weapon::getType()
 {
-	return (/*this->*/_type);
+	return (_type);
 }
 
-void Weapon::setType(std::string type)
+void Weapon::setType(std::string newWeapon)
 {
-	/*this->*/_type = type;
+	_type = newWeapon;
 }

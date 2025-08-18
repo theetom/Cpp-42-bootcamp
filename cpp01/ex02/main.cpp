@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/11 13:00:36 by etom              #+#    #+#             */
-/*   Updated: 2025/07/25 10:19:34 by toferrei         ###   ########.fr       */
+/*   Created: 2025/08/18 14:55:30 by toferrei          #+#    #+#             */
+/*   Updated: 2025/08/18 14:55:35 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,5 @@ int main()
 	// std::cout << std::setfill (' ') << std::setw (15) << "*stringPTR";
 	// std::cout << " " << *stringPTR << std::endl;
 	std::cout << std::setfill (' ') << std::setw (15) << "stringREF";
-	std::cout << " " << stringREF << std::endl;
+	std::cout << " " << stringREF << "\n" << std::endl;
 }

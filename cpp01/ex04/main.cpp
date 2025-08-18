@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/14 16:30:40 by etom              #+#    #+#             */
-/*   Updated: 2025/07/25 10:20:07 by toferrei         ###   ########.fr       */
+/*   Created: 2025/08/18 18:12:59 by toferrei          #+#    #+#             */
+/*   Updated: 2025/08/18 18:13:01 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 int main(int argc, char **argv)
 {
-	std::string file_buffer;
+	std::string fileBuffer;
 	int i;
 	int length;
 	char c;

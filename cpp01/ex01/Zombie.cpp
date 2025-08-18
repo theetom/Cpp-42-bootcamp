@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/09 07:57:10 by etom              #+#    #+#             */
-/*   Updated: 2025/07/25 10:19:24 by toferrei         ###   ########.fr       */
+/*   Created: 2025/08/18 14:56:04 by toferrei          #+#    #+#             */
+/*   Updated: 2025/08/18 14:56:06 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,20 @@ Zombie::Zombie()
 
 Zombie::~Zombie()
 {
-	std::cout << name << " was destroyed" << std::endl;
+	std::cout << _name << " was destroyed" << std::endl;
 }
 
 void Zombie::announce()
 {
-	std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
-void Zombie::name_setter(std::string new_name)
+void Zombie::nameSetter(std::string newName)
 {
-	name = new_name;
+	_name = newName;
 }
 
-std::string Zombie::name_getter()
+std::string Zombie::nameGetter()
 {
-	return (name);
+	return (_name);
 }

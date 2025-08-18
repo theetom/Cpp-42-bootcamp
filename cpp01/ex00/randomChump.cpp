@@ -5,17 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/09 07:57:08 by etom              #+#    #+#             */
-/*   Updated: 2025/07/25 10:19:09 by toferrei         ###   ########.fr       */
+/*   Created: 2025/08/18 13:41:44 by toferrei          #+#    #+#             */
+/*   Updated: 2025/08/18 13:47:16 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-void randomChump( std::string name )
+void randomChump( std::string newName )
 {
 	Zombie zombie;
 
-	zombie.name_setter(name); 
-	std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	zombie.nameSetter(newName);
+	std::cout << zombie.nameGetter() << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }

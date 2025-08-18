@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/09 17:00:44 by etom              #+#    #+#             */
-/*   Updated: 2025/07/25 10:19:15 by toferrei         ###   ########.fr       */
+/*   Created: 2025/08/18 13:41:58 by toferrei          #+#    #+#             */
+/*   Updated: 2025/08/18 14:00:10 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@
 class Zombie
 {
 	private:
-		std::string name;
-	public:
+		std::string _name;
 
+	public:
 		Zombie();
 		~Zombie();
 		void announce();
-		void name_setter(std::string new_name);
-		// void name_setter(std::string name);
-
+		void nameSetter(std::string newName);
+		std::string	nameGetter();
+		
 };
-
+	
 void randomChump( std::string name );
 Zombie* newZombie( std::string name );
 
