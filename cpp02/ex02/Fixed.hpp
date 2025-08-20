@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 16:00:50 by toferrei          #+#    #+#             */
-/*   Updated: 2025/08/20 19:15:32 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/08/20 19:43:20 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,18 @@ class Fixed
 		Fixed( const Fixed &Fixed );
 		Fixed &operator=( const Fixed &Fixed );
 
-		friend bool operator<(const Fixed &numA, const Fixed &numB); // do actual comparison
-		friend bool operator>(const Fixed &numA, const Fixed &numB); // return A < B
-		friend bool operator<=(const Fixed &numA, const Fixed &numB); // return !(A > B)
-		friend bool operator>=(const Fixed &numA, const Fixed &numB); // return !(A < B)
+		bool operator<(const Fixed &num) const; // do actual comparison
+		bool operator>(const Fixed &num) const; // return A < B
+		bool operator<=(const Fixed &num) const; // return !(A > B)
+		bool operator>=(const Fixed &num) const; // return !(A < B)
 
-		friend bool operator==(const Fixed &numA, const Fixed &numB); // do actual comparison
-		friend bool operator!=(const Fixed &numA, const Fixed &numB); // return !(A == B)
+		bool operator==(const Fixed &num) const; // do actual comparison
+		bool operator!=(const Fixed &num) const; // return !(A == B)
 
-		friend Fixed operator+(const Fixed &numA, const Fixed &numB);
-		friend Fixed operator-(const Fixed &numA, const Fixed &numB);
-		friend Fixed operator*(const Fixed &numA, const Fixed &numB);
-		friend Fixed operator/(const Fixed &numA, const Fixed &numB);
+		Fixed operator+(const Fixed &num) const;
+		Fixed operator-(const Fixed &num) const;
+		Fixed operator*(const Fixed &num) const;
+		Fixed operator/(const Fixed &num) const;
 
 		Fixed &operator++();
 		Fixed operator++(int);

@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 16:00:45 by toferrei          #+#    #+#             */
-/*   Updated: 2025/08/20 19:17:17 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/08/20 19:44:02 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,24 +48,48 @@ Fixed &Fixed::operator=( const Fixed &copy )
 	return (*this);
 }
 
-bool operator<(const Fixed &numA, const Fixed &numB)
+bool Fixed::operator<(const Fixed &num) const
 {
-	return (numA._value < numB._value);
+	return ((*this)._value < num._value);
 }
 
-bool operator>(const Fixed &numA, const Fixed &numB)
+bool Fixed::operator>(const Fixed &num) const
 {
-	return (numB < numA);
+	return ((*this)._value > num._value);
 }
 
-bool operator<=(const Fixed &numA, const Fixed &numB)
+bool Fixed::operator<=(const Fixed &num) const
 {
-	return !(numA < numB);
+	return !((*this)._value < num._value);
 }
 
-bool operator>=(const Fixed &numA, const Fixed &numB)
+bool Fixed::operator>=(const Fixed &num) const
 {
-	return !(numA > numB);
+	return !((*this)._value > num._value);
+}
+
+Fixed Fixed::operator+(const Fixed &num) const
+{
+	
+	return ((*this)._value + num._value);
+}
+
+Fixed Fixed::operator-(const Fixed &num) const
+{
+	
+	return ((*this)._value - num._value);
+}
+
+Fixed Fixed::operator*(const Fixed &num) const
+{
+	
+	return ((*this)._value * num._value);
+}
+
+Fixed Fixed::operator/(const Fixed &num) const
+{
+	
+	return ((*this)._value / num._value);
 }
 
 Fixed &Fixed::operator++()
