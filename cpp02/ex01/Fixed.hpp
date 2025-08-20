@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/25 10:48:09 by toferrei          #+#    #+#             */
-/*   Updated: 2025/08/11 16:00:29 by toferrei         ###   ########.fr       */
+/*   Created: 2025/08/20 11:11:58 by toferrei          #+#    #+#             */
+/*   Updated: 2025/08/20 14:16:31 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,34 @@
 
 # define FIXED_HPP
 
-# include <iostream>
+#include <iostream>
+#include <cmath>
 
 class Fixed
 {
-	private :
+	private:
+		int _value;
 		static const int _literal = 8;
 
-    public:
-        Fixed(const int number);
-        Fixed(const Fixed& other);
-        Fixed &operator=(const Fixed &other);
-		Fixed &operator<<(const Fixed &other);
-        ~Fixed();
+	public:
 
-		float	toFloat( void ) const;
-		int		toInt( void ) const;
+		Fixed();
+		~Fixed();
+		Fixed( const int newValue );
+		Fixed( const float newValue);
+
+		Fixed( const Fixed &Fixed );
+		Fixed &operator=( const Fixed &Fixed );
+
+
+		int getRawBits() const;
+		void setRawBits( int const raw );
+
+		float toFloat() const;
+		int toInt() const;
 };
 
+std::ostream &operator<<( std::ostream& out, const Fixed &fixed );
+
+
 #endif
-// varivel++

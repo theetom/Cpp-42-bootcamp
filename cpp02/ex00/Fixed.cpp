@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/18 18:24:24 by etom              #+#    #+#             */
-/*   Updated: 2025/07/25 10:20:52 by toferrei         ###   ########.fr       */
+/*   Created: 2025/08/20 11:12:03 by toferrei          #+#    #+#             */
+/*   Updated: 2025/08/20 13:49:24 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ Fixed &Fixed::operator=( const Fixed &copy )
 	return (*this);
 }
 
-int Fixed::getRawBits( void ) const
+int Fixed::getRawBits() const
 {
 	std::cout << "getRawBits member function called" << std::endl;
 	return (_value);
@@ -48,7 +48,4 @@ void Fixed::setRawBits( int const raw )
 	std::cout << "setRawBits member function called" << std::endl;
 	_value = raw;
 }
-
-
-
 
