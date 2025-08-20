@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 16:00:45 by toferrei          #+#    #+#             */
-/*   Updated: 2025/08/20 19:44:02 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/08/20 23:59:22 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,26 +70,38 @@ bool Fixed::operator>=(const Fixed &num) const
 
 Fixed Fixed::operator+(const Fixed &num) const
 {
+	Fixed temp;
+
+	temp._value = (*this)._value + num._value;
 	
-	return ((*this)._value + num._value);
+	return (temp);
 }
 
 Fixed Fixed::operator-(const Fixed &num) const
 {
+	Fixed temp;
+
+	temp._value = (*this)._value - num._value;
 	
-	return ((*this)._value - num._value);
+	return (temp);
 }
 
 Fixed Fixed::operator*(const Fixed &num) const
 {
+	Fixed temp;
+
+	temp._value = (*this)._value * num._value >> _literal;
 	
-	return ((*this)._value * num._value);
+	return (temp);
 }
 
 Fixed Fixed::operator/(const Fixed &num) const
 {
+	Fixed temp;
+
+	temp._value = ((*this)._value << _literal) / num._value;
 	
-	return ((*this)._value / num._value);
+	return (temp);
 }
 
 Fixed &Fixed::operator++()
