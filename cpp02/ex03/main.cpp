@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/20 11:11:58 by toferrei          #+#    #+#             */
-/*   Updated: 2025/08/21 00:23:44 by toferrei         ###   ########.fr       */
+/*   Created: 2025/08/20 23:18:20 by toferrei          #+#    #+#             */
+/*   Updated: 2025/08/21 01:23:16 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-
-# define FIXED_HPP
+#include "Fixed.hpp"
+#include "Point.hpp"
 
 #include <iostream>
 
-class Fixed
+int main( void )
 {
-	public:
+	const Point a(0, 10);
 
-		Fixed();
-		~Fixed();
-		Fixed( const Fixed &Fixed );
-		Fixed &operator=( const Fixed &Fixed );
+	std::cout << std::endl;
+	std::cout << a.getX() << std::endl;
+	std::cout << a.getY() << std::endl;
 
-		int getRawBits() const;
-		void setRawBits( int const raw );
-
-	private:
-		int _value;
-		static const int _literal = 8;
-
-};
-
-#endif
+	std::cout << a << std::endl;
+}

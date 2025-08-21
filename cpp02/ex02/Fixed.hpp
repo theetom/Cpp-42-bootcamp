@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 16:00:50 by toferrei          #+#    #+#             */
-/*   Updated: 2025/08/20 19:43:20 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/08/21 00:22:50 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,6 @@
 
 class Fixed
 {
-	private:
-		int _value;
-		static const int _literal = 8;
-
 	public:
 
 		Fixed();
@@ -61,6 +57,10 @@ class Fixed
 		static const Fixed &max(const Fixed &numA, const Fixed &numB);
 		static Fixed &min(Fixed &numA, Fixed &numB);
 		static const Fixed &min(const Fixed &numA, const Fixed &numB);
+		
+	private:
+		int _value;
+		static const int _literal = 8;
 
 };
 
