@@ -6,7 +6,7 @@
 #    By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/20 16:00:36 by toferrei          #+#    #+#              #
-#    Updated: 2025/08/21 01:02:12 by toferrei         ###   ########.fr        #
+#    Updated: 2025/08/21 11:54:28 by toferrei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME		=	FixedPoint3
 
 SOURCE		=	main.cpp \
 				Fixed.cpp \
-				Point.cpp
+				Point.cpp \
+				bsp.cpp
 
 
 OBJ_DIR		=	Objects/

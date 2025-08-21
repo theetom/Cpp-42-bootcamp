@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 16:00:50 by toferrei          #+#    #+#             */
-/*   Updated: 2025/08/21 00:54:33 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/08/21 12:00:14 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ class Fixed
 };
 
 std::ostream &operator<<( std::ostream& out, const Fixed &fixed );
+
 
 
 #endif

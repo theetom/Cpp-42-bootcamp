@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 00:11:59 by toferrei          #+#    #+#             */
-/*   Updated: 2025/08/21 01:13:18 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/08/21 10:47:28 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ class Point
 	public:
 		Point();
 		~Point();
-		Point( const Point &Point );
+		Point( const Point &point );
 		Point( const float newX, const float newY );
-		Point &operator=( const Point &Fixed );
+		Point &operator=( const Point &fixed );
 
 		const Fixed &getX() const;
 		const Fixed &getY() const;
@@ -32,6 +32,6 @@ class Point
 		const Fixed _y;
 };
 
-std::ostream &operator<<(std::ostream &out, Point const point);
+std::ostream &operator<<(std::ostream &out, const Point &point);
 
 #endif
