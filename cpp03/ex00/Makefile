@@ -6,16 +6,15 @@
 #    By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/26 15:06:25 by toferrei          #+#    #+#              #
-#    Updated: 2025/08/26 15:06:59 by toferrei         ###   ########.fr        #
+#    Updated: 2025/08/27 16:20:54 by toferrei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	ClapTrap
+NAME		=	ClapTrapClass
 
-SOURCE		=	main.cpp /
+SOURCE		=	ClapTrap.cpp \
+				main.cpp
 				
-
-
 OBJ_DIR		=	Objects/
 
 OBJECTS		=	$(patsubst %.cpp, $(OBJ_DIR)%.o, $(SOURCE))

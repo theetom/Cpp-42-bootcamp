@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 16:00:45 by toferrei          #+#    #+#             */
-/*   Updated: 2025/08/20 23:59:22 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/08/27 16:17:04 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,16 @@ bool Fixed::operator<=(const Fixed &num) const
 bool Fixed::operator>=(const Fixed &num) const
 {
 	return !((*this)._value > num._value);
+}
+
+bool Fixed::operator==(const Fixed &num) const
+{
+	return ((*this)._value == num._value);
+}
+
+bool Fixed::operator!=(const Fixed &num) const
+{
+	return !((*this) == num);
 }
 
 Fixed Fixed::operator+(const Fixed &num) const

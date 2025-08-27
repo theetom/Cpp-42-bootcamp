@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 16:21:16 by toferrei          #+#    #+#             */
-/*   Updated: 2025/08/26 17:57:20 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/08/27 17:01:14 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,48 @@ ClapTrap &ClapTrap::operator=( const ClapTrap &copy )
 
 void ClapTrap::attack(const std::string& target)
 {
-
+	if (_healthPoints == 0 || _energyPoints == 0)
+		std::cout << this->_name
+					<< "Doesn't have enough HP or EP to attack."
+					<< std::endl;
+	else
+	{
+		this->_energyPoints--;
+		std::cout << "ClapTrap "
+					<< this->_name
+					<< " attacks "
+					<< target 
+					<< ", causing "
+					<< this->_attackDamage
+					<< " points of damage!"
+					<< std::endl;
+	}
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-	
+	if (_healthPoints == 0)
+		std::cout << this->_name 
+					<< " is already dead"
+					<< std::endl;
+	if (amount >= this->_healthPoints)
+		this->_healthPoints -= amount;
+	else
+	{	
+		amount = this->_healthPoints;
+		this->_healthPoints = 0;
+	}
+	std::cout << this->_name
+				<<"takeDamage ced"
+				<<""
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
-
+	if (_energyPoints == 0)
+		std::cout << this->_name
+					<< "Doesn't have enough EP to repair."
+					<< std::endl;
+	this->_energyPoints--;
+	this->_healthPoints += amount;
 }
