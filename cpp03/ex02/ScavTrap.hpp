@@ -1,44 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/27 16:18:02 by toferrei          #+#    #+#             */
-/*   Updated: 2025/08/28 12:32:26 by toferrei         ###   ########.fr       */
+/*   Created: 2025/08/28 14:14:00 by toferrei          #+#    #+#             */
+/*   Updated: 2025/08/28 18:07:21 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef SCAVTRAP_H
+
+# define SCAVTRAP_H
+
 #include "ClapTrap.hpp"
 
-int main()
+class ScavTrap: public ClapTrap
 {
-	ClapTrap temp("Pedro");
+	public:
+		ScavTrap();
+		~ScavTrap();
+		ScavTrap(std::string name);
+		ScavTrap(const ScavTrap &copy);
+		ScavTrap &operator=( const ScavTrap &src);
 
-	ClapTrap joao("Joao");
+		void attack(const std::string& target);
+		void guardGate();
 
+	private:
+		int _guarding;
 
-	for (int i = 0; i < 12; i++)
-	{
-		temp.attack("Pedro");
-	}
-	for (int i = 0; i < 12; i++)
-	{
-		temp.takeDamage(1);
-	}
-	for (int i = 0; i < 10; i++)
-	{
-		temp.beRepaired(1);
-	}
-	for (int i = 0; i < 12; i++)
-	{
-		joao.takeDamage(1);
-	}
-	for (int i = 0; i < 10; i++)
-	{
-		joao.beRepaired(1);
-	}
+};
 
-	
-}
+#endif

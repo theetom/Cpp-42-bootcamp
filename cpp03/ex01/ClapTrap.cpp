@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 16:21:16 by toferrei          #+#    #+#             */
-/*   Updated: 2025/08/28 18:30:05 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/08/28 18:29:42 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ ClapTrap &ClapTrap::operator=( const ClapTrap &copy )
 
 void ClapTrap::attack(const std::string& target)
 {
+	std::cout << "Clap Attack!\n";
 	if (this->_healthPoints == 0 || this->_energyPoints == 0)
 		std::cout << this->_name
 					<< " doesn't have enough HP or EP to attack."

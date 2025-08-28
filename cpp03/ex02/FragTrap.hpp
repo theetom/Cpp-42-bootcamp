@@ -1,44 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/27 16:18:02 by toferrei          #+#    #+#             */
-/*   Updated: 2025/08/28 12:32:26 by toferrei         ###   ########.fr       */
+/*   Created: 2025/08/28 18:01:35 by toferrei          #+#    #+#             */
+/*   Updated: 2025/08/28 18:26:34 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FRAGTRAP_HPP
+
+# define FRAGTRAP_HPP
+
 #include "ClapTrap.hpp"
 
-int main()
+class FragTrap: public ClapTrap
 {
-	ClapTrap temp("Pedro");
+	public:
+		FragTrap();
+		~FragTrap();
+		FragTrap(std::string name);
+		FragTrap(const FragTrap &copy);
+		FragTrap &operator=(const FragTrap &src);
 
-	ClapTrap joao("Joao");
+		void attack(const std::string& target);
+		void highFivesGuys();
 
+};
 
-	for (int i = 0; i < 12; i++)
-	{
-		temp.attack("Pedro");
-	}
-	for (int i = 0; i < 12; i++)
-	{
-		temp.takeDamage(1);
-	}
-	for (int i = 0; i < 10; i++)
-	{
-		temp.beRepaired(1);
-	}
-	for (int i = 0; i < 12; i++)
-	{
-		joao.takeDamage(1);
-	}
-	for (int i = 0; i < 10; i++)
-	{
-		joao.beRepaired(1);
-	}
-
-	
-}
+#endif
