@@ -6,11 +6,11 @@
 #    By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/26 15:06:25 by toferrei          #+#    #+#              #
-#    Updated: 2025/08/28 18:20:45 by toferrei         ###   ########.fr        #
+#    Updated: 2025/08/31 17:45:58 by toferrei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	ClapTrapClass
+NAME		=	FragTrapClass
 
 SOURCE		=	ClapTrap.cpp \
 				ScavTrap.cpp \

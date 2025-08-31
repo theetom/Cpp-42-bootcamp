@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/28 14:13:41 by toferrei          #+#    #+#             */
-/*   Updated: 2025/08/31 16:12:04 by toferrei         ###   ########.fr       */
+/*   Created: 2025/08/31 16:22:19 by toferrei          #+#    #+#             */
+/*   Updated: 2025/08/31 16:52:51 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ ScavTrap::ScavTrap(const ScavTrap &copy): ClapTrap(copy)
 	this->_guarding = copy._guarding;
 }
 
-ScavTrap &ScavTrap::operator=( const ScavTrap &src)
+ScavTrap &ScavTrap::operator=(const ScavTrap &src)
 {
 	std::cout << "ScavTrap assignement operator overload called."
 				<< std::endl;

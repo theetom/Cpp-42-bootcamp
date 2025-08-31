@@ -5,15 +5,17 @@
 #                                                     +:+ +:+         +:+      #
 #    By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/08/26 15:06:25 by toferrei          #+#    #+#              #
-#    Updated: 2025/08/31 16:05:19 by toferrei         ###   ########.fr        #
+#    Created: 2025/08/31 16:22:58 by toferrei          #+#    #+#              #
+#    Updated: 2025/08/31 17:45:46 by toferrei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	ScavTrapClass
+NAME		=	DiamondTrapClass
 
 SOURCE		=	ClapTrap.cpp \
 				ScavTrap.cpp \
+				FragTrap.cpp \
+				DiamondTrap.cpp \
 				main.cpp
 				
 OBJ_DIR		=	Objects/

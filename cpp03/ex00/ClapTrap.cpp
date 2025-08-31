@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 16:21:16 by toferrei          #+#    #+#             */
-/*   Updated: 2025/08/28 18:30:05 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/08/31 17:32:40 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,13 @@ void ClapTrap::takeDamage(unsigned int amount)
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
+	if (this->_healthPoints == 0)
+	{	
+		std::cout << this->_name 
+					<< " is already dead"
+					<< std::endl;
+		return ;
+	}
 	if (this->_energyPoints == 0)
 	{	std::cout << this->_name
 					<< "Doesn't have enough EP to repair."

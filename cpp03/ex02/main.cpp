@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 16:18:02 by toferrei          #+#    #+#             */
-/*   Updated: 2025/08/28 18:24:57 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/08/31 16:16:52 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 int main()
 {
-	ScavTrap temp("Pedro");
+	ScavTrap temp("Scav");
 
 	std::cout << "\n da um salto\n" << std::endl;
 
@@ -24,7 +24,7 @@ int main()
 
 	std::cout << "\n da um salto\n" << std::endl;
 
-	FragTrap frag("olaola");
+	FragTrap frag("frag");
 
 	std::cout << "\n da um salto\n" << std::endl;
 
@@ -32,7 +32,11 @@ int main()
 	temp.attack("someone else");
 	frag.attack("another someone");
 
+	std::cout << "\n da um salto\n" << std::endl;
+
 	frag.highFivesGuys();
+
+	std::cout << "\n da um salto\n" << std::endl;
 
 	temp.guardGate();
 	ScavTrap temp1 = temp;
