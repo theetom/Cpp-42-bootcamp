@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 16:21:45 by toferrei          #+#    #+#             */
-/*   Updated: 2025/09/01 14:03:30 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/09/01 15:24:24 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ FragTrap &FragTrap::operator=(const FragTrap &src)
 {
 	std::cout << "FragTrap assignement operator overload called."
 				<< std::endl;
-	if (this != &copy)
+	if (this != &src)
 	{
 		ClapTrap::operator=(src);
 	}

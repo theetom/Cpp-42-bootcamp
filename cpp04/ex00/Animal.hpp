@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 12:51:47 by toferrei          #+#    #+#             */
-/*   Updated: 2025/09/01 13:28:35 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/09/01 15:46:13 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,14 @@ class Animal
 {
 	public:
 		Animal();
-		~Animal();
+		virtual ~Animal();
+		Animal(std::string type);
 		Animal(const Animal &copy);
 		Animal &operator=(const Animal &src);
 
-		std::string getType();
+		std::string getType() const;
 
-		void makeSound();
+		virtual void makeSound() const;
 
 	protected:
 		std::string type;

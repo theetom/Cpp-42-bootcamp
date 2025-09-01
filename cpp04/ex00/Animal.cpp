@@ -6,13 +6,13 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 13:04:19 by toferrei          #+#    #+#             */
-/*   Updated: 2025/09/01 13:33:19 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/09/01 15:48:24 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 
-Animal::Animal():type("some animal")
+Animal::Animal(): type("some animal")
 {
 	std::cout << "Default Animal Constructor" << std::endl;
 }
@@ -22,12 +22,33 @@ Animal::~Animal()
 	std::cout << "Default Animal Destructor" << std::endl;
 }
 
-std::string Animal::getType()
+Animal::Animal(std::string type): type(type)
 {
-	return (this->type);
+	std::cout << "Type Animal Contructor" << std::endl;
 }
 
-void Animal::makeSound()
+Animal::Animal(const Animal &copy)
+{
+	std::cout << "Copy Animal Contructor" << std::endl;
+	*this = copy;
+	
+}
+
+Animal &Animal::operator=(const Animal &src)
+{
+	if(this != &src)
+	{
+		this->type = src.type;
+	}
+	return (*this);
+}
+
+std::string Animal::getType() const
+{
+	return (type);
+}
+
+void Animal::makeSound() const
 {
 	std::cout << "Growls" << std::endl;
 }

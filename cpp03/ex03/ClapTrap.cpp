@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 16:21:01 by toferrei          #+#    #+#             */
-/*   Updated: 2025/08/31 17:39:45 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/09/01 15:24:15 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,15 @@ ClapTrap::ClapTrap( const ClapTrap &copy):_name(copy._name)
 	*this = copy;
 }
 
-ClapTrap &ClapTrap::operator=( const ClapTrap &copy )
+ClapTrap &ClapTrap::operator=( const ClapTrap &src )
 {
 	std::cout << "ClapTrap assignment operator overload called" << std::endl;
-	if (this != &copy)
+	if (this != &src)
 	{
-		this->_name = copy._name;
-		this->_healthPoints = copy._healthPoints;
-		this->_energyPoints = copy._energyPoints;
-		this->_attackDamage = copy._attackDamage;
+		this->_name = src._name;
+		this->_healthPoints = src._healthPoints;
+		this->_energyPoints = src._energyPoints;
+		this->_attackDamage = src._attackDamage;
 	}
 	return (*this);
 }
