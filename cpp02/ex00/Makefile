@@ -5,17 +5,15 @@
 #                                                     +:+ +:+         +:+      #
 #    By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/08/20 16:00:36 by toferrei          #+#    #+#              #
-#    Updated: 2025/08/29 13:06:00 by toferrei         ###   ########.fr        #
+#    Created: 2025/08/20 13:52:02 by toferrei          #+#    #+#              #
+#    Updated: 2025/08/29 13:11:18 by toferrei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	FixedPointTriangle
+NAME		=	FixedPoint
 
 SOURCE		=	main.cpp \
-				Fixed.cpp \
-				Point.cpp \
-				bsp.cpp
+				Fixed.cpp
 
 
 OBJ_DIR		=	Objects/
