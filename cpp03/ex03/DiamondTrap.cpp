@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 16:28:04 by toferrei          #+#    #+#             */
-/*   Updated: 2025/08/31 17:57:43 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/09/01 14:03:11 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,12 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &src)
 {
 	std::cout << "DiamondTrap assignement operator overload called."
 				<< std::endl;
-	// ScavTrap::operator=(src);
-	FragTrap::operator=(src);
-	this->_name = src._name;
+	if (this != &copy)
+	{
+		// ScavTrap::operator=(src);
+		FragTrap::operator=(src);
+		this->_name = src._name;
+	}
 	return (*this);
 }
 

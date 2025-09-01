@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 16:22:19 by toferrei          #+#    #+#             */
-/*   Updated: 2025/08/31 16:52:51 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/09/01 14:03:45 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,11 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &src)
 {
 	std::cout << "ScavTrap assignement operator overload called."
 				<< std::endl;
-	ClapTrap::operator=(src);
-	this->_guarding = src._guarding;
+	if (this != &copy)
+	{
+		ClapTrap::operator=(src);
+		this->_guarding = src._guarding;
+	}
 	return (*this);
 }
 
