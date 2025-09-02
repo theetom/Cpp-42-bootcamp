@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/01 15:14:18 by toferrei          #+#    #+#             */
-/*   Updated: 2025/09/02 16:24:42 by toferrei         ###   ########.fr       */
+/*   Created: 2025/09/02 16:37:32 by toferrei          #+#    #+#             */
+/*   Updated: 2025/09/02 16:37:34 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
+#ifndef CAT_HPP
 
-# define DOG_HPP
+# define CAT_HPP
 
 #include <iostream>
 #include "Animal.hpp"
 
-class Dog : public Animal
+class Cat: public Animal
 {
 	public:
-		Dog();
-		virtual ~Dog();
-		// Dog(std::string type);
-		Dog(const Dog &copy);
-		Dog &operator=(const Dog &src);
+		Cat();
+		virtual ~Cat();
+		// Cat(std::string type);
+		Cat(const Cat &copy);
+		Cat &operator=(const Cat &src);
 
 		virtual void makeSound() const;
 };

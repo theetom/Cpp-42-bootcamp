@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   AllHeaders.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/01 15:14:18 by toferrei          #+#    #+#             */
-/*   Updated: 2025/09/02 16:24:42 by toferrei         ###   ########.fr       */
+/*   Created: 2025/09/02 14:02:12 by toferrei          #+#    #+#             */
+/*   Updated: 2025/09/02 14:04:08 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
+#ifndef ALLHEADERS_HPP
 
-# define DOG_HPP
+# define ALLHEADERS_HPP
 
-#include <iostream>
 #include "Animal.hpp"
-
-class Dog : public Animal
-{
-	public:
-		Dog();
-		virtual ~Dog();
-		// Dog(std::string type);
-		Dog(const Dog &copy);
-		Dog &operator=(const Dog &src);
-
-		virtual void makeSound() const;
-};
+#include "Dog.hpp"
+#include "Cat.hpp"
+#include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
+#include <iostream>
+#include <iomanip>
 
 #endif

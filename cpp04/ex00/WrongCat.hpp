@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   WrongCat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/01 15:14:18 by toferrei          #+#    #+#             */
-/*   Updated: 2025/09/02 16:24:42 by toferrei         ###   ########.fr       */
+/*   Created: 2025/09/01 15:13:45 by toferrei          #+#    #+#             */
+/*   Updated: 2025/09/01 16:48:08 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
+#ifndef WRONGCAT_HPP
 
-# define DOG_HPP
+# define WRONGCAT_HPP
 
 #include <iostream>
-#include "Animal.hpp"
+#include "WrongAnimal.hpp"
 
-class Dog : public Animal
+class WrongCat: public WrongAnimal
 {
 	public:
-		Dog();
-		virtual ~Dog();
-		// Dog(std::string type);
-		Dog(const Dog &copy);
-		Dog &operator=(const Dog &src);
+		WrongCat();
+		virtual ~WrongCat();
+		// WrongCat(std::string type);
+		WrongCat(const WrongCat &copy);
+		WrongCat &operator=(const WrongCat &src);
 
-		virtual void makeSound() const;
+		void makeSound() const;
 };
 
 #endif
