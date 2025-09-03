@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 16:40:07 by toferrei          #+#    #+#             */
-/*   Updated: 2025/09/03 19:27:17 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/09/03 23:33:58 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,11 @@ class Brain
 		Brain(const Brain &copy);
 		Brain &operator=(const Brain &src);
 
+		void setIdea(int i, std::string str);
+		std::string getIdea(int i);
+
 	private:
-		std::string _ideas(100, 'b', malloc(100));
+		std::string _ideas[100];
 };
 
 #endif

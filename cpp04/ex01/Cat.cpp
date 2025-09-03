@@ -6,21 +6,21 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 16:37:26 by toferrei          #+#    #+#             */
-/*   Updated: 2025/09/03 19:09:15 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/09/04 00:47:47 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat(): Animal("Cat")
+Cat::Cat(): Animal("Cat"), _brain(new Brain())
 {
 	std::cout << "Default Cat Constructor" << std::endl;
-	this->_brain = new Brain();
 }
 
 Cat::~Cat()
 {
 	std::cout << "Default Cat Destructor" << std::endl;
+	delete(this->_brain);
 }
 
 /* Cat::Cat(std::string type): Animal(type)
@@ -29,9 +29,10 @@ Cat::~Cat()
 	std::cout << "Type Cat Contructor" << std::endl;
 } */
 
-Cat::Cat(const Cat &copy): Animal(copy)
+Cat::Cat(const Cat &copy): Animal(copy), _brain(NULL)
 {
 	std::cout << "Copy Cat Contructor" << std::endl;
+	*this = copy;
 }
 
 Cat &Cat::operator=(const Cat &src)
@@ -39,7 +40,9 @@ Cat &Cat::operator=(const Cat &src)
 	if(this != &src)
 	{
 		Animal::operator=(src);
-		this->_brain = src._brain;
+		if (this->_brain != NULL)
+			delete this->_brain;
+		this->_brain = new Brain(*src._brain);
 	}
 	return (*this);
 }
@@ -47,4 +50,9 @@ Cat &Cat::operator=(const Cat &src)
 void Cat::makeSound() const
 {
 	std::cout << "Meows" << std::endl;
+}
+
+Brain *Cat::getBrain() const
+{
+	return (this->_brain);
 }

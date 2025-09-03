@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 16:37:45 by toferrei          #+#    #+#             */
-/*   Updated: 2025/09/03 19:08:09 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/09/03 23:57:47 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ class Dog : public Animal
 		Dog &operator=(const Dog &src);
 
 		virtual void makeSound() const;
+
+		Brain *getBrain() const;
 
 	private:
 		Brain *_brain;

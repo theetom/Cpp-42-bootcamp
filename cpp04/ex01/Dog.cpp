@@ -6,16 +6,15 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 16:37:39 by toferrei          #+#    #+#             */
-/*   Updated: 2025/09/03 19:10:38 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/09/04 00:43:59 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-Dog::Dog(): Animal("Dog")
+Dog::Dog(): Animal("Dog"), _brain(new Brain())
 {
 	std::cout << "Default Dog Constructor" << std::endl;
-	this->_brain = new Brain();
 }
 
 Dog::~Dog()
@@ -29,9 +28,10 @@ Dog::~Dog()
 	std::cout << "Type Dog Contructor" << std::endl;
 } */
 
-Dog::Dog(const Dog &copy): Animal(copy)
+Dog::Dog(const Dog &copy): Animal(copy),_brain(NULL)
 {
 	std::cout << "Copy Dog Contructor" << std::endl;
+	*this = copy;
 }
 
 Dog &Dog::operator=(const Dog &src)
@@ -39,6 +39,9 @@ Dog &Dog::operator=(const Dog &src)
 	if(this != &src)
 	{
 		Animal::operator=(src);
+		if (this->_brain != NULL)
+			delete this->_brain;
+		this->_brain = new Brain(*src._brain);
 	}
 	return (*this);
 }
@@ -46,4 +49,9 @@ Dog &Dog::operator=(const Dog &src)
 void Dog::makeSound() const
 {
 	std::cout << "Barks" << std::endl;
+}
+
+Brain *Dog::getBrain() const
+{
+	return (this->_brain);
 }

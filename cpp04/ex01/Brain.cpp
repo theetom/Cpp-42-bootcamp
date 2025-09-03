@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 17:12:20 by toferrei          #+#    #+#             */
-/*   Updated: 2025/09/03 19:26:41 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/09/03 23:35:59 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,32 @@ Brain &Brain::operator=(const Brain &src)
 {
 	if (this != &src)
 	{
-		this->_ideas = src._ideas;
+		int i = 0;
+		while (i < 100)
+		{
+			this->_ideas[i] = src._ideas[i];
+			i++;
+		}
 	}
+	return (*this);
+}
+
+void Brain::setIdea(int i, std::string str)
+{
+	if (0 > i && i >= 100 )
+		return ;
+	while (i < 100)
+	{
+		_ideas[i] = str;
+		i++;
+	}
+}
+
+std::string Brain::getIdea(int i)
+{
+	if (0 <= i && i < 100 )
+		return (this->_ideas[i]);
+	else
+		std::cout << "chose an index between 0 and a 99" << std::endl;
+	return (NULL);
 }

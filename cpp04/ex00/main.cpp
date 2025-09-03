@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 16:19:08 by toferrei          #+#    #+#             */
-/*   Updated: 2025/09/02 16:34:42 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/09/04 00:51:45 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int main()
 		delete (j);
 		delete (i);
 
-		std::cout << std::setfill('-') << std::setw(100) << "\n" << std::endl;
 	}
+	std::cout << "\n" << std::setfill('-') << std::setw(25) << "\n" << std::endl;
 	{
 		const WrongAnimal* meta = new WrongAnimal();
 		const WrongAnimal* i = new WrongCat();
