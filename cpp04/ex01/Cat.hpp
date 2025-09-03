@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 16:37:32 by toferrei          #+#    #+#             */
-/*   Updated: 2025/09/02 16:37:34 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/09/03 19:09:49 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # define CAT_HPP
 
 #include <iostream>
+#include "Brain.hpp"
 #include "Animal.hpp"
 
 class Cat: public Animal
@@ -27,6 +28,9 @@ class Cat: public Animal
 		Cat &operator=(const Cat &src);
 
 		virtual void makeSound() const;
+	
+	private:
+		Brain *_brain;
 };
 
 #endif

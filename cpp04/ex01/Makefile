@@ -6,7 +6,7 @@
 #    By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/02 16:38:00 by toferrei          #+#    #+#              #
-#    Updated: 2025/09/02 16:38:02 by toferrei         ###   ########.fr        #
+#    Updated: 2025/09/03 19:06:31 by toferrei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SOURCE		=	Animal.cpp \
 				Dog.cpp \
 				WrongAnimal.cpp \
 				WrongCat.cpp \
+				Brain.cpp \
 				main.cpp
 				
 OBJ_DIR		=	Objects/

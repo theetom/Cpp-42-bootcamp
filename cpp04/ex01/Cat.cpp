@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 16:37:26 by toferrei          #+#    #+#             */
-/*   Updated: 2025/09/02 16:37:28 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/09/03 19:09:15 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 Cat::Cat(): Animal("Cat")
 {
 	std::cout << "Default Cat Constructor" << std::endl;
+	this->_brain = new Brain();
 }
 
 Cat::~Cat()
@@ -38,6 +39,7 @@ Cat &Cat::operator=(const Cat &src)
 	if(this != &src)
 	{
 		Animal::operator=(src);
+		this->_brain = src._brain;
 	}
 	return (*this);
 }
