@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/03 17:12:20 by toferrei          #+#    #+#             */
-/*   Updated: 2025/09/04 15:25:04 by toferrei         ###   ########.fr       */
+/*   Created: 2025/09/04 15:15:44 by toferrei          #+#    #+#             */
+/*   Updated: 2025/09/04 15:33:24 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ Brain &Brain::operator=(const Brain &src)
 
 void Brain::setIdea(int i, std::string str)
 {
-	if (i < 0 || i >= 100 )
+	if (0 > i || i >= 100 )
 		return ;
 	while (i < 100)
 	{

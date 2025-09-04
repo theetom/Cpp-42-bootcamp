@@ -1,42 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/02 16:37:26 by toferrei          #+#    #+#             */
-/*   Updated: 2025/09/04 15:47:03 by toferrei         ###   ########.fr       */
+/*   Created: 2025/09/04 15:16:09 by toferrei          #+#    #+#             */
+/*   Updated: 2025/09/04 15:39:26 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "Dog.hpp"
 
-Cat::Cat(): Animal("Cat")
+Dog::Dog(): Animal("Dog"), _brain(new Brain())
 {
-	this->_brain = new Brain();
-	std::cout << "Default Cat Constructor" << std::endl;
+	std::cout << "Default Dog Constructor" << std::endl;
 }
 
-Cat::~Cat()
+Dog::~Dog()
 {
-	std::cout << "Default Cat Destructor" << std::endl;
-	delete(this->_brain);
+	std::cout << "Default Dog Destructor" << std::endl;
+	delete (this->_brain);
 }
 
-/* Cat::Cat(std::string type): Animal(type)
+/* Dog::Dog(std::string type): Animal(type)
 {
-	this->type = type;
-	std::cout << "Type Cat Contructor" << std::endl;
+	std::cout << "Type Dog Contructor" << std::endl;
 } */
 
-Cat::Cat(const Cat &copy): Animal(copy), _brain(NULL)
+Dog::Dog(const Dog &copy): Animal(copy),_brain(NULL)
 {
-	std::cout << "Copy Cat Contructor" << std::endl;
+	std::cout << "Copy Dog Contructor" << std::endl;
 	*this = copy;
 }
 
-Cat &Cat::operator=(const Cat &src)
+Dog &Dog::operator=(const Dog &src)
 {
 	if(this != &src)
 	{
@@ -48,12 +46,12 @@ Cat &Cat::operator=(const Cat &src)
 	return (*this);
 }
 
-void Cat::makeSound() const
+void Dog::makeSound() const
 {
-	std::cout << "Meows" << std::endl;
+	std::cout << "Barks" << std::endl;
 }
 
-Brain *Cat::getBrain() const
+Brain *Dog::getBrain() const
 {
 	return (this->_brain);
 }

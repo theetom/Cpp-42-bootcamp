@@ -5,16 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/02 16:37:26 by toferrei          #+#    #+#             */
-/*   Updated: 2025/09/04 15:47:03 by toferrei         ###   ########.fr       */
+/*   Created: 2025/09/04 15:15:57 by toferrei          #+#    #+#             */
+/*   Updated: 2025/09/04 15:16:00 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat(): Animal("Cat")
+Cat::Cat(): Animal("Cat"), _brain(new Brain())
 {
-	this->_brain = new Brain();
 	std::cout << "Default Cat Constructor" << std::endl;
 }
 
