@@ -1,45 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cure.cpp                                           :+:      :+:    :+:   */
+/*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/04 16:52:24 by toferrei          #+#    #+#             */
-/*   Updated: 2025/09/05 23:01:01 by toferrei         ###   ########.fr       */
+/*   Created: 2025/09/05 22:08:31 by toferrei          #+#    #+#             */
+/*   Updated: 2025/09/05 22:13:23 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cure.hpp"
+#include "Character.hpp"
 
-Cure::Cure(): AMateria("cure")
+Character::Character():_name("empty")
 {
-	
+	for (int i = 0; i < INVENTORY; i++)
+		_inventory[i] = NULL;
 }
 
-Cure::~Cure()
+Character::~Character()
 {
-	
+	for (int i = 0; i < INVENTORY; i++)
+		if (_inventory[i])
+			delete (_inventory[i]);
 }
 
-Cure::Cure(const Cure &copy):AMateria(copy._type)
-{
-
-}
-
-Cure& Cure::operator=(const Cure &src)
-{
-	if (this != &src)
-		_type = src._type;
-	return (*this);
-}
-
-Cure*	Cure::clone() const
-{
-	return (new Cure());
-}
-
-void	Cure::use(ICharacter &target)
-{
-	std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
-}
+Character::Character(std::string &name)

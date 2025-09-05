@@ -1,32 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cure.hpp                                           :+:      :+:    :+:   */
+/*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/04 17:00:04 by toferrei          #+#    #+#             */
-/*   Updated: 2025/09/05 22:57:29 by toferrei         ###   ########.fr       */
+/*   Created: 2025/09/05 21:34:33 by toferrei          #+#    #+#             */
+/*   Updated: 2025/09/05 22:08:09 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CURE_HPP
+#ifndef CHARACTER_HPP
 
-# define CURE_HPP
+# define CHARACTER_HPP
 
-#include "AMateria.hpp"
 #include "ICharacter.hpp"
 
-class Cure : virtual public AMateria
+#define INVENTORY 4
+
+class Character: virtual public ICharacter
 {
 	public:
-		Cure();
-		Cure(const Cure &src);
-		Cure& operator=(const Cure &src);
-		~Cure();
+		Character();
+		~Character();
+		Character(const std::string &name);
+		Character(const Character &copy);
+		Character& operator=(const Character &src);
 
-		Cure* clone() const;
-		void use(ICharacter &target);
+		void equip(AMateria* m);
+		void unequip(int idx);
+		void use(int idx, ICharacter& target);
+
+
+
+	private:
+		std::string _name;
+		AMateria* _inventory[INVENTORY];
 };
 
 #endif
