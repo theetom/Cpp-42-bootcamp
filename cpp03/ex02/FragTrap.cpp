@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 18:01:17 by toferrei          #+#    #+#             */
-/*   Updated: 2025/09/01 14:01:56 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/09/05 10:11:12 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ FragTrap &FragTrap::operator=(const FragTrap &src)
 {
 	std::cout << "FragTrap assignement operator overload called."
 				<< std::endl;
-	if (this != &copy)
+	if (this != &src)
 	{
 		ClapTrap::operator=(src);
 	}
@@ -73,7 +73,7 @@ void FragTrap::attack(const std::string& target)
 					<< target 
 					<< ", causing "
 					<< this->_attackDamage
-					<< " points of damage! And leaving it with "
+					<< " points of damage! And leaving itself with "
 					<< this->_energyPoints
 					<< " energy points."
 					<< std::endl;

@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 16:22:19 by toferrei          #+#    #+#             */
-/*   Updated: 2025/09/01 15:24:34 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/09/05 10:11:42 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void ScavTrap::attack(const std::string& target)
 					<< target 
 					<< ", causing "
 					<< this->_attackDamage
-					<< " points of damage! And leaving it with "
+					<< " points of damage! And leaving itself with "
 					<< this->_energyPoints
 					<< " energy points."
 					<< std::endl;

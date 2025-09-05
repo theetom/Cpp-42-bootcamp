@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 14:13:41 by toferrei          #+#    #+#             */
-/*   Updated: 2025/09/01 14:02:43 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/09/05 10:10:26 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ ScavTrap &ScavTrap::operator=( const ScavTrap &src)
 {
 	std::cout << "ScavTrap assignement operator overload called."
 				<< std::endl;
-	if (this != &copy)
+	if (this != &src)
 	{
 		ClapTrap::operator=(src);
 		this->_guarding = src._guarding;
@@ -76,7 +76,7 @@ void ScavTrap::attack(const std::string& target)
 					<< target 
 					<< ", causing "
 					<< this->_attackDamage
-					<< " points of damage! And leaving it with "
+					<< " points of damage! And leaving itself with "
 					<< this->_energyPoints
 					<< " energy points."
 					<< std::endl;
