@@ -6,37 +6,43 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 16:18:02 by toferrei          #+#    #+#             */
-/*   Updated: 2025/08/31 16:16:52 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/09/05 09:59:32 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
+#include <iomanip>
 
 int main()
 {
 	ScavTrap temp("Scav");
 
-	std::cout << "\n da um salto\n" << std::endl;
+	std::cout << "\n" << std::setfill ('-') << std::setw (15)
+				<< "\n" << std::endl;
 
 	ClapTrap clap("clap");
 
-	std::cout << "\n da um salto\n" << std::endl;
+	std::cout << "\n" << std::setfill ('-') << std::setw (15)
+				<< "\n" << std::endl;
 
 	FragTrap frag("frag");
 
-	std::cout << "\n da um salto\n" << std::endl;
+	std::cout << "\n" << std::setfill ('-') << std::setw (15)
+				<< "\n" << std::endl;
 
 	clap.attack("someone");
 	temp.attack("someone else");
 	frag.attack("another someone");
 
-	std::cout << "\n da um salto\n" << std::endl;
+	std::cout << "\n" << std::setfill ('-') << std::setw (15)
+				<< "\n" << std::endl;
 
 	frag.highFivesGuys();
 
-	std::cout << "\n da um salto\n" << std::endl;
+	std::cout << "\n" << std::setfill ('-') << std::setw (15)
+				<< "\n" << std::endl;
 
 	temp.guardGate();
 	ScavTrap temp1 = temp;
