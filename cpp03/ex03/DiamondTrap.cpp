@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 16:28:04 by toferrei          #+#    #+#             */
-/*   Updated: 2025/09/01 15:23:15 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/09/05 10:04:42 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &src)
 				<< std::endl;
 	if (this != &src)
 	{
-		// ScavTrap::operator=(src);
-		FragTrap::operator=(src);
+		ScavTrap::operator=(src);
+		// FragTrap::operator=(src);
 		this->_name = src._name;
 	}
 	return (*this);

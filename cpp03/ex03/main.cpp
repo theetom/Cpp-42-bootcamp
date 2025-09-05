@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 16:27:56 by toferrei          #+#    #+#             */
-/*   Updated: 2025/08/31 18:05:07 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/09/05 10:04:00 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(void)
 
 	DiamondTrap diamondito("diamondito");
 
-	std::cout << "\n"  << std::setfill ('-') << std::setw (100)
+	std::cout << "\n"  << std::setfill ('-') << std::setw (15)
 				<< "\n" << std::endl;
 
 	diamondito.attack("someone");
@@ -27,7 +27,7 @@ int	main(void)
 	diamondito.attack("well I don't know anymore");
 	diamondito.attack("I think we've attacked enough people");
 
-	std::cout << "\n" << std::setfill ('-') << std::setw (100)
+	std::cout << "\n" << std::setfill ('-') << std::setw (15)
 				<< "\n" << std::endl;
 
 	diamondito.guardGate();
@@ -37,12 +37,14 @@ int	main(void)
 	diamondito.takeDamage(20);
 	diamondito.beRepaired(10);
 
-	std::cout << "\n" << std::setfill ('-') << std::setw (100)
+	std::cout << "\n" << std::setfill ('-') << std::setw (15)
 				<< "\n" << std::endl;
+
+	std::cout << "bobito (the imposter)\n" << std::endl;
 
 	DiamondTrap bobito(diamondito);
 
-	std::cout << "\n" << std::setfill ('-') << std::setw (100)
+	std::cout << "\n" << std::setfill ('-') << std::setw (15)
 				<< "\n" << std::endl;
 
 	bobito.takeDamage(20);
@@ -51,25 +53,25 @@ int	main(void)
 	bobito.guardGate();
 	bobito.highFivesGuys();
 
-	std::cout << "\n" << std::setfill ('-') << std::setw (100)
+	std::cout << "\n" << std::setfill ('-') << std::setw (15)
 				<< "\n" << std::endl;
 
 	bobito = diamondito;
 
-	std::cout << "\n" << std::setfill ('-') << std::setw (100)
+	std::cout << "\n" << std::setfill ('-') << std::setw (15)
 				<< "\n" << std::endl;
 
 	bobito.whoAmI();
 	bobito.guardGate();
 	bobito.highFivesGuys();
 
-	std::cout << "\n" << std::setfill ('-') << std::setw (100)
+	std::cout << "\n" << std::setfill ('-') << std::setw (15)
 				<< "\n" << std::endl;
 
 	bobito.takeDamage(20);
 	bobito.beRepaired(10);
 	
-	std::cout << "\n" << std::setfill ('-') << std::setw (100)
+	std::cout << "\n" << std::setfill ('-') << std::setw (15)
 				<< "\n" << std::endl;
 
 }
