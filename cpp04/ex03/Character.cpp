@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 22:08:31 by toferrei          #+#    #+#             */
-/*   Updated: 2025/09/05 22:13:23 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/09/06 10:40:03 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,10 @@ Character::~Character()
 			delete (_inventory[i]);
 }
 
-Character::Character(std::string &name)
+Character::Character(const std::string &name):_name(name)
+{
+	for (int i = 0; i < INVENTORY; i++)
+		_inventory[i] = NULL;
+}
+
+Character::Character(const Character &src)
