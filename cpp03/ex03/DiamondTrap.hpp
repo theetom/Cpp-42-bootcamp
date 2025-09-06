@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 16:28:07 by toferrei          #+#    #+#             */
-/*   Updated: 2025/08/31 18:01:41 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/09/06 10:28:38 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include "FragTrap.hpp"
 #include <iomanip>
 
-class DiamondTrap: public FragTrap, public ScavTrap
+class DiamondTrap: virtual public FragTrap, virtual public ScavTrap
 {
 	public:
 		DiamondTrap();
