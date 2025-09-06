@@ -6,11 +6,17 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 16:19:08 by toferrei          #+#    #+#             */
-/*   Updated: 2025/09/04 00:51:45 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/09/06 10:48:11 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AllHeaders.hpp"
+#include "Animal.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
+#include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
+#include <iostream>
+#include <iomanip>
 
 int main()
 {
