@@ -6,11 +6,11 @@
 #    By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/02 16:38:00 by toferrei          #+#    #+#              #
-#    Updated: 2025/09/03 19:06:31 by toferrei         ###   ########.fr        #
+#    Updated: 2025/09/06 10:45:34 by toferrei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	Polymorphism
+NAME		=	CatAndDogs2
 
 SOURCE		=	Animal.cpp \
 				Cat.cpp \
