@@ -6,14 +6,14 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 11:32:31 by toferrei          #+#    #+#             */
-/*   Updated: 2025/09/25 11:42:53 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/09/25 19:15:49 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat(): _name("default"),
-							_grade(150)
+						_grade(150)
 {
 	std::cout << "Default Constructor" << std::endl;
 }
@@ -51,7 +51,9 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &src)
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << "Default Destructor for " << this->getName() << std::endl;
+	std::cout << "Default Destructor for "
+			<< this->getName()
+			<< std::endl;
 
 }
 
@@ -79,6 +81,28 @@ void Bureaucrat::decreaseGrade()
 	this->_grade++;
 }
 
+void Bureaucrat::signForm(Form &Form)
+{
+	try
+	{
+		Form.beSigned(*this);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << this->getName()
+				<< " couldn't sign "
+				<< Form.getName()
+				<< " because "
+				<< e.what()
+				<< "." << std::endl;
+		return ;
+	}
+	std::cout << this->getName()
+			<< " signed "
+			<< Form.getName()
+			<< "." << std::endl;
+}
+
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return ("Grade too high!");
@@ -91,6 +115,8 @@ const char *Bureaucrat::GradeTooLowException::what() const throw()
 
 std::ostream &operator<<( std::ostream& out, const Bureaucrat &src)
 {
-	out << src.getName() << ", bureaucrat grade " << src.getGrade();
+	out << src.getName()
+		<< ", bureaucrat grade "
+		<< src.getGrade();
 	return (out);
 }
