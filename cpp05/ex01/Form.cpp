@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 11:33:23 by toferrei          #+#    #+#             */
-/*   Updated: 2025/09/25 19:15:16 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/10/01 14:29:01 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ std::ostream &operator<<( std::ostream &out, const Form &src)
 	else
 		out << "no";
 	out << "\n"
-		<< "Minimum signing level: " << src.getMinSignature() << "\n"
-		<< "Minimu";
+		<< "Minimum signing level: " << src.getMinSignature() << ".\n"
+		<< "Minimum execution level: " << src.getMinExecution() << ".";
 	return (out);
 }
