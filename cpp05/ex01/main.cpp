@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 11:32:41 by toferrei          #+#    #+#             */
-/*   Updated: 2025/10/01 15:17:29 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/10/01 15:20:47 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,8 @@ int main()
 			std::cerr << e.what() << std::endl;
 		}
 	}
+		underTitle("===Forms===");
+
 	Bureaucrat Joana("Joana", 25);
 	Bureaucrat Joao("Joao", 45);
 	Form test1("Intergalactic Highway 321", 30, 30);
@@ -157,6 +159,10 @@ int main()
 	Form test2(test1);
 	std::cout << test2 << std::endl;
 
+	Joana.signForm(test1);
+	std::cout << test1 << std::endl;
+	test1 = test2;
+	std::cout << test1 << std::endl;
 	try
 	{
 		Joana.signForm(test1);
