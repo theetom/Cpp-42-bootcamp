@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 18:19:03 by toferrei          #+#    #+#             */
-/*   Updated: 2025/10/01 18:19:05 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/10/02 13:14:57 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,14 @@ class ShrubberyCreationForm : public AForm
 		ShrubberyCreationForm(const ShrubberyCreationForm &src);
 		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &src);
 
+		std::string getTarget() const;
+
 		void execute(Bureaucrat const &executor) const;
 
 	private:
 		std::string _target;
 };
+
+std::ostream &operator<<( std::ostream &out, const ShrubberyCreationForm &src);
 
 #endif

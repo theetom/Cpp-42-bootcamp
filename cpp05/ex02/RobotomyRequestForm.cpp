@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 17:42:42 by toferrei          #+#    #+#             */
-/*   Updated: 2025/10/01 18:29:12 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/10/02 13:10:41 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,11 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &s
 	return (*this);
 }
 
+std::string RobotomyRequestForm::getTarget() const
+{
+	return (this->_target);
+}
+
 void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
 	AForm::execute(executor);
@@ -57,4 +62,19 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 	{
 		std::cout << "Apparently making holes in someone's brain is too much..." << std::endl;
 	}
+}
+
+std::ostream &operator<<( std::ostream &out, const RobotomyRequestForm &src)
+{
+	out << "Form's name: " << src.getName() << "\n"
+		<< "Has it been signed: ";
+	if (src.getValidation())
+		out << "yes";
+	else
+		out << "no";
+	out << "\n"
+		<< "Minimum signing level: " << src.getMinSignature() << ".\n"
+		<< "Minimum execution level: " << src.getMinExecution() << ".\n";
+	out << "Target: " << src.getTarget() << ".\n" << std::endl;
+	return (out);
 }

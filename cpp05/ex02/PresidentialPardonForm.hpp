@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 18:24:21 by toferrei          #+#    #+#             */
-/*   Updated: 2025/10/01 18:25:45 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/10/02 13:12:40 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,12 @@ class PresidentialPardonForm : public AForm
 
 		void execute(Bureaucrat const &executor) const;
 
+		std::string getTarget() const;
+
 	private:
 		std::string _target;
 };
+
+std::ostream &operator<<( std::ostream &out, const PresidentialPardonForm &src);
 
 #endif

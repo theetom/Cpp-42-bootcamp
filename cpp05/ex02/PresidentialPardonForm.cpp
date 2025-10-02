@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 18:24:16 by toferrei          #+#    #+#             */
-/*   Updated: 2025/10/01 18:33:01 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/10/02 13:10:00 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &src
 
 }
 
+std::string PresidentialPardonForm::getTarget() const
+{
+	return (this->_target);
+}
+
 PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &src)
 {
 	if (this != &src)
@@ -48,4 +53,19 @@ void PresidentialPardonForm::execute(Bureaucrat const &executor) const
 	AForm::execute(executor);
 
 	std::cout << _target << " has been pardoned by Zaphod Beeblebrox" << std::endl;
+}
+
+std::ostream &operator<<( std::ostream &out, const PresidentialPardonForm &src)
+{
+	out << "Form's name: " << src.getName() << "\n"
+		<< "Has it been signed: ";
+	if (src.getValidation())
+		out << "yes";
+	else
+		out << "no";
+	out << "\n"
+		<< "Minimum signing level: " << src.getMinSignature() << ".\n"
+		<< "Minimum execution level: " << src.getMinExecution() << ".\n";
+	out << "Target: " << src.getTarget() << ".\n" << std::endl;
+	return (out);
 }

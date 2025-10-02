@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 15:51:07 by toferrei          #+#    #+#             */
-/*   Updated: 2025/10/01 16:05:44 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/10/02 12:56:43 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,5 @@ class AForm
 		const int			_execVal;
 };
 
-std::ostream &operator<<( std::ostream &out, const AForm &src);
 
 #endif
