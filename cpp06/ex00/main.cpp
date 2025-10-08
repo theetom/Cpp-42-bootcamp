@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 16:00:51 by toferrei          #+#    #+#             */
-/*   Updated: 2025/10/02 16:03:25 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/10/08 17:57:39 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,13 @@ int main(int argc, char **argv)
 		return (0);
 	}
 
-	ScalarTypeConverter::convert(argv[1]);
-
+	try 
+	{
+		ScalarTypeConverter::convert(argv[1]);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what();
+	}
 	return (0);
 }

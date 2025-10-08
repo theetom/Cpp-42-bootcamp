@@ -6,13 +6,15 @@
 #    By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/01 15:50:39 by toferrei          #+#    #+#              #
-#    Updated: 2025/10/02 15:30:57 by toferrei         ###   ########.fr        #
+#    Updated: 2025/10/08 18:13:33 by toferrei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	Forms++
+NAME		=	ScalarTypeConverter
 
 SOURCE		=	ScalarTypeConverter.cpp \
+				typeFinder.cpp \
+				converters.cpp \
 				main.cpp
 				
 OBJ_DIR		=	Objects/

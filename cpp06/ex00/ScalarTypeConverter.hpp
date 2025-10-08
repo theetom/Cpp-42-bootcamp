@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:30:18 by toferrei          #+#    #+#             */
-/*   Updated: 2025/10/06 16:24:57 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/10/08 18:24:21 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 
 #include <iostream>
 #include <cstdlib>
-#include <typeinfo>
 
 enum e_Type
 {
@@ -39,6 +38,25 @@ class ScalarTypeConverter
 	public:
 		static void convert(const std::string &str);
 
+		class InvalidInput : public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
+
+		class NotDisplayable : public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
+
 };
+
+e_Type whatType(std::string str, int length);
+void convertSpecial(std::string str);
+void convertChar(std::string str);
+void convertInt(std::string str);
+void convertFloat(std::string str);
+void convertDouble(std::string str);
 
 #endif
