@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:29:52 by toferrei          #+#    #+#             */
-/*   Updated: 2025/10/08 18:24:47 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/10/09 17:27:56 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ ScalarTypeConverter &ScalarTypeConverter::operator=(const ScalarTypeConverter &s
 void ScalarTypeConverter::convert(const std::string &str)
 {
 	e_Type type = whatType(str, strlen(str.c_str()));
-	float i = strtof(str.c_str(), NULL);
-	std::cout << i;
 	switch (type)
 	{
 		case 0:
@@ -50,7 +48,7 @@ void ScalarTypeConverter::convert(const std::string &str)
 		}
 		case 1:
 		{
-			convertChar(str);
+			convertChar(str[0]);
 			return ;
 		}
 		case 2:
@@ -76,9 +74,4 @@ void ScalarTypeConverter::convert(const std::string &str)
 const char *ScalarTypeConverter::InvalidInput::what() const throw()
 {
 	return ("Invalid Input");
-}
-
-const char *ScalarTypeConverter::NotDisplayable::what() const throw()
-{
-	return ("Un-displayable Input");
 }

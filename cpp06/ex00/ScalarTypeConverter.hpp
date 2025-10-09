@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:30:18 by toferrei          #+#    #+#             */
-/*   Updated: 2025/10/08 18:24:21 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/10/09 17:25:22 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,11 @@ class ScalarTypeConverter
 				virtual const char *what() const throw();
 		};
 
-		class NotDisplayable : public std::exception
-		{
-			public:
-				virtual const char *what() const throw();
-		};
-
 };
 
 e_Type whatType(std::string str, int length);
 void convertSpecial(std::string str);
-void convertChar(std::string str);
+void convertChar(char c);
 void convertInt(std::string str);
 void convertFloat(std::string str);
 void convertDouble(std::string str);

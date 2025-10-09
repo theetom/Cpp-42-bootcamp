@@ -6,11 +6,12 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 18:12:57 by toferrei          #+#    #+#             */
-/*   Updated: 2025/10/08 18:27:42 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/10/09 18:14:53 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarTypeConverter.hpp"
+#include <climits>
 
 void convertSpecial(std::string str)
 {
@@ -39,25 +40,81 @@ void convertSpecial(std::string str)
 
 void convertChar(char c)
 {
+	std::cout << "char : ";
 	if (!isprint(c))
-		throw ScalarTypeConverter::NotDisplayable();
-	std::cout <<
+		std::cout << "Non displayable" << std::endl;
+	else
+		std::cout << "\'" << c <<"\'" << std::endl;
+	std::cout << "int: " << static_cast<int>(c) << std::endl;
+	std::cout << "float: " << static_cast<float>(c) <<".0f" << std::endl;
+	std::cout << "double: " << static_cast<double>(c) <<".0" << std::endl;
 }
 
 void convertInt(std::string str)
 {
+	long i = atol(str.c_str());
 
-	
+	if (i >= INT_MIN && i <= INT_MAX)
+	{
+		if (i >= CHAR_MIN && i <= CHAR_MAX)
+		{
+			std::cout << "char : ";
+			if (isprint(static_cast<char>(i)))
+			{
+				std::cout << "\'" << static_cast<unsigned char>(i) <<"\'" << std::endl;
+			}
+			else
+			std::cout << "Non displayable" << std::endl;	
+		}
+		else
+			std::cout << "char: impossible" << std::endl;
+		std::cout << "int: " << i << std::endl;
+		std::cout << "float: " << static_cast<float>(i) <<".0f" << std::endl;
+		std::cout << "double: " << static_cast<double>(i) <<".0" << std::endl;
+	}
+	else
+		throw ScalarTypeConverter::InvalidInput();
+}
+
+int gettingDecimals(std::string str)
+{
+	std::size_t found = str.find('.'); 
+
+	if (found != std::string::npos)
+	{
+		return (atoi((str.substr(found + 1)).c_str()));
+	}
+	else
+		return 0;
 }
 
 void convertFloat(std::string str)
 {
+	float f = strtof(str.c_str(), NULL);
 
-	
+	int i = gettingDecimals(str);
+
+	if (i >= CHAR_MIN && i <= CHAR_MAX)
+	{
+		std::cout << "char : ";
+		if (isprint(static_cast<char>(i)))
+		{
+			std::cout << "\'" << static_cast<unsigned char>(i) <<"\'" << std::endl;
+		}
+		else
+		std::cout << "Non displayable" << std::endl;	
+	}
+	else
+		std::cout << "char: impossible" << std::endl;
+	if (i >= INT_MIN && i <= INT_MAX)
+	{
+		std::cout << "int: " << static_cast<int>(i) << std::endl;
+	}
+	else
+		std::cout << "int: impossible" << std::endl;
 }
 
 void convertDouble(std::string str)
 {
-
-	
+	(void)str;
 }
