@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 18:12:57 by toferrei          #+#    #+#             */
-/*   Updated: 2025/10/09 18:14:53 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/10/09 18:22:48 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,10 @@ int gettingDecimals(std::string str)
 {
 	std::size_t found = str.find('.'); 
 
+	std::cout << (str.substr(found + 1)).c_str();
 	if (found != std::string::npos)
 	{
-		return (atoi((str.substr(found + 1)).c_str()));
+		return (atol((str.substr(found + 1)).c_str()));
 	}
 	else
 		return 0;
@@ -92,26 +93,30 @@ void convertFloat(std::string str)
 {
 	float f = strtof(str.c_str(), NULL);
 
-	int i = gettingDecimals(str);
+	std::cout << str;
 
-	if (i >= CHAR_MIN && i <= CHAR_MAX)
+	int i = gettingDecimals(str);
+	(void)i;
+
+	if (f >= CHAR_MIN && f <= CHAR_MAX)
 	{
 		std::cout << "char : ";
-		if (isprint(static_cast<char>(i)))
+		if (isprint(static_cast<char>(f)))
 		{
-			std::cout << "\'" << static_cast<unsigned char>(i) <<"\'" << std::endl;
+			std::cout << "\'" << static_cast<unsigned char>(f) <<"\'" << std::endl;
 		}
 		else
 		std::cout << "Non displayable" << std::endl;	
 	}
 	else
 		std::cout << "char: impossible" << std::endl;
-	if (i >= INT_MIN && i <= INT_MAX)
+	if (static_cast<int>(f) >= INT_MIN && static_cast<int>(f) <= INT_MAX)
 	{
-		std::cout << "int: " << static_cast<int>(i) << std::endl;
+		std::cout << "int: " << static_cast<int>(f) << std::endl;
 	}
 	else
 		std::cout << "int: impossible" << std::endl;
+	std::cout << "float: " << static_cast<int>(f) << "." << i << "f" << std::endl;
 }
 
 void convertDouble(std::string str)
