@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 18:12:57 by toferrei          #+#    #+#             */
-/*   Updated: 2025/10/09 18:22:48 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/10/13 14:34:24 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void convertChar(char c)
 	else
 		std::cout << "\'" << c <<"\'" << std::endl;
 	std::cout << "int: " << static_cast<int>(c) << std::endl;
-	std::cout << "float: " << static_cast<float>(c) <<".0f" << std::endl;
+	std::cout << "float: " << static_cast<float>(c) << ".0f" << std::endl;
 	std::cout << "double: " << static_cast<double>(c) <<".0" << std::endl;
 }
 
@@ -76,11 +76,11 @@ void convertInt(std::string str)
 		throw ScalarTypeConverter::InvalidInput();
 }
 
-int gettingDecimals(std::string str)
+long gettingDecimals(std::string str)
 {
 	std::size_t found = str.find('.'); 
 
-	std::cout << (str.substr(found + 1)).c_str();
+	std::cout << (str.substr(found + 1)).c_str() << std::endl;
 	if (found != std::string::npos)
 	{
 		return (atol((str.substr(found + 1)).c_str()));
@@ -93,10 +93,10 @@ void convertFloat(std::string str)
 {
 	float f = strtof(str.c_str(), NULL);
 
-	std::cout << str;
+	
+	std::cout << str << std::endl;
 
-	int i = gettingDecimals(str);
-	(void)i;
+	long i = gettingDecimals(str);
 
 	if (f >= CHAR_MIN && f <= CHAR_MAX)
 	{
@@ -117,9 +117,39 @@ void convertFloat(std::string str)
 	else
 		std::cout << "int: impossible" << std::endl;
 	std::cout << "float: " << static_cast<int>(f) << "." << i << "f" << std::endl;
+	// std::cout << "float: " << f << "f" << std::endl;
+	std::cout << "double: " << static_cast<int>(f) << "." << i << std::endl;
+	// std::cout << "double: " << static_cast<double>(f) << std::endl;
 }
 
 void convertDouble(std::string str)
 {
-	(void)str;
+	double f = strtod(str.c_str(), NULL);
+
+	std::cout << str << std::endl;
+
+	long i = gettingDecimals(str);
+
+	if (f >= CHAR_MIN && f <= CHAR_MAX)
+	{
+		std::cout << "char : ";
+		if (isprint(static_cast<char>(f)))
+		{
+			std::cout << "\'" << static_cast<unsigned char>(f) <<"\'" << std::endl;
+		}
+		else
+		std::cout << "Non displayable" << std::endl;	
+	}
+	else
+		std::cout << "char: impossible" << std::endl;
+	if (static_cast<int>(f) >= INT_MIN && static_cast<int>(f) <= INT_MAX)
+	{
+		std::cout << "int: " << static_cast<int>(f) << std::endl;
+	}
+	else
+		std::cout << "int: impossible" << std::endl;
+	std::cout << "float: " << static_cast<int>(f) << "." << i << "f" << std::endl;
+	// std::cout << "float: " << static_cast<float>(f) << "f" << std::endl;
+	std::cout << "double: " << static_cast<int>(f) << "." << i << std::endl;
+	// std::cout << "double: " << f << std::endl;
 }
