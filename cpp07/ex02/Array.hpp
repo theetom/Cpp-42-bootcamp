@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 14:52:25 by toferrei          #+#    #+#             */
-/*   Updated: 2025/10/15 15:08:59 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/10/16 14:37:10 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 # define ARRAY_HPP
 
+#include <fstream>
+
 template <typename T> class Array
 {
 	public:
 		Array();
 		Array(unsigned int n);
 		Array(const Array &src);
+		~Array();
 		Array &operator=(const Array &src);
 		T &operator[](unsigned int n);
 		T const &operator[](unsigned int n) const;
@@ -30,11 +33,15 @@ template <typename T> class Array
 		{
 			public:
 				virtual const char *what() const throw();
-		}
+		};
 
 	private :
-		unsigned int _n;
 		T *_arr;
+		unsigned int _n;
 };
 
-#endif
+#include "Array.tpp"
+
+template <typename T> std::ostream &operator<<(std::ostream &c, const Array<T> &src);
+
+#endif	
