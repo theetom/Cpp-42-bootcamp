@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 16:53:59 by toferrei          #+#    #+#             */
-/*   Updated: 2025/10/21 17:55:42 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/10/22 17:15:39 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <exception>
 #include <algorithm>
 #include <vector>
+#include <iostream>
 
 class Span
 {
@@ -27,20 +28,24 @@ class Span
 		Span(const Span &src);
 		Span &operator=(const Span &src);
 
-		unsigned int getN();
+		unsigned int getN() const;
+		std::vector<int> getArray() const;
 
 		void addNumber(int i);
 
 		unsigned int shortestSpan();
 		unsigned int longestSpan();
 
-		class OutOfBounds : public std::exception
+		class NotEnoughNumbers : public std::exception
 		{
 			public:
-				virtual const char* what() const throw()
-				{
-					return ("Out of bounds");
-				}
+				virtual const char *what() const throw();
+		};
+
+		class ContainerFull : public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
 		};
 
 	private:
