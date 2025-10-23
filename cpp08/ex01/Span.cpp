@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 16:53:44 by toferrei          #+#    #+#             */
-/*   Updated: 2025/10/22 18:49:31 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/10/23 12:43:08 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,18 +55,18 @@ std::vector<int> Span::getArray() const
 
 void Span::addNumber(int i)
 {
-	try
+	if (this->_arr.size() >= _N)
 	{
-		if (this->_arr.size() >= _N)
-		{
-			throw Span::ContainerFull();
-		}
-		this->_arr.push_back(i);
+		throw Span::ContainerFull();
 	}
-	catch (std::exception &e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+	this->_arr.push_back(i);
+}
+
+void Span::addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
+	if (this->_arr.size() + (end - begin) > this->_N)
+		throw Span::ContainerFull();
+	this->_arr.insert(this->_arr.end(), begin, end);
 }
 
 unsigned int Span::shortestSpan()
@@ -87,6 +87,7 @@ unsigned int Span::shortestSpan()
 unsigned int Span::longestSpan()
 {
 	std::vector<int> tmp = this->_arr;
+	std::sort(tmp.begin(), tmp.end());
 	return (tmp.at(tmp.size() - 1) - tmp.at(0));
 }
 
