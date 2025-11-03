@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 11:56:09 by toferrei          #+#    #+#             */
-/*   Updated: 2025/10/30 17:17:49 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/10/31 17:41:35 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,19 @@
 #include <sstream>
 #include <utility>
 #include <cstdlib>
+#include <algorithm>
+#include <vector>
 
 class BitcoinExchange
 {
 	public:
 		BitcoinExchange();
 		~BitcoinExchange();
-		BitcoinExchange(std::fstream *inputFile);
+		BitcoinExchange(std::fstream *inputFile, std::fstream *dataBaseToCompare, std::string inputFileName);
 		BitcoinExchange(const BitcoinExchange &src);
 		BitcoinExchange &operator=(const BitcoinExchange &src);
 
-		void comparator(std::fstream *inputFile, char *fileName) const;
+		void comparator() const;
 
 		class FailedConvertion : public std::exception
 		{
@@ -52,7 +54,13 @@ class BitcoinExchange
 				virtual const char *what() const throw();
 		};
 
-		class InvalidValue : public std::exception
+		class NegativeValue : public std::exception
+		{
+			public :
+				virtual const char *what() const throw();
+		};
+
+		class ValueTooBig : public std::exception
 		{
 			public :
 				virtual const char *what() const throw();
@@ -60,6 +68,8 @@ class BitcoinExchange
 
 	private:
 		std::map<int, float> _dataBase;
+		std::vector<std::string> _secondDataBase;
+		std::string _inputFileName;
 
 };
 
