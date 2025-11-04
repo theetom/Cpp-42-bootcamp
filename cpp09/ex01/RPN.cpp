@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 14:29:22 by toferrei          #+#    #+#             */
-/*   Updated: 2025/11/03 19:33:22 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/11/04 01:14:53 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,35 @@ std::string cleanInput(std::string input, char c)
 
 void RPN::calculate(double a, double b, char c)
 {
+	std::cout << "a: " << a << "b: " << b << "c: "<< c << std::endl;
 	if (c == '+')
 		this->_values.push(b + a);
-	if (c == '-')
+	else if (c == '-')
 		this->_values.push(b - a);
-	if (c == '*')
+	else if (c == '*')
 		this->_values.push(b * a);
-	if (c == '/' && a != 0)
+	else if (c == '/' && a != 0)
 		this->_values.push(b / a);
 	else
 		throw RPN::DivisionByZero();
 }
+
+/*		Alternative "Rigid" Parser (only accepts a string to a certain format digit or )
+
+	for (std::string::iterator it = input.begin(); it <= input.end(); ++it)
+	{
+		if (isdigit(*it))
+			numbers++;
+		else if (input.size() > 1 && (*it == '+' || *it == '-' || *it == '*' || *it == '/'))
+			symbols++;
+		else
+			throw RPN::InvalidInput();
+		++it;
+		std::cout << *it << std::endl;
+		if (input.size() > 1 && it < input.end() && *it != ' ')
+			throw RPN::InvalidInput();
+	}
+*/
 
 RPN::RPN(std::string input)
 {
@@ -62,13 +80,10 @@ RPN::RPN(std::string input)
 		else
 			throw RPN::InvalidInput();
 		++it;
-		std::cout << "dentro" << std::endl;
 		std::cout << *it << std::endl;
 		if (input.size() > 1 && it < input.end() && *it != ' ')
 			throw RPN::InvalidInput();
-		std::cout << "semi fora" <<std::endl;
 	}
-	std::cout << "sai" << std::endl;
 	if (symbols != numbers - 1)
 		throw RPN::InvalidInput();
 	input = cleanInput(input, ' ');
@@ -76,7 +91,7 @@ RPN::RPN(std::string input)
 	for (std::string::iterator it = input.begin(); it != input.end(); ++it)
 	{
 		if (isdigit(*it))
-			this->_values.push(*it);
+			this->_values.push(*it - 48);
 		else if ((*it == '+' || *it == '-' || *it == '*' || *it == '/') && this->_values.size() > 1)
 		{
 			int a = this->_values.top();
@@ -90,7 +105,6 @@ RPN::RPN(std::string input)
 	}
 	if (this->_values.size() > 1)
 		throw RPN::InvalidInput();
-	std::cout << this->_values.top() << std::endl;
 }
 
 RPN::RPN(const RPN &src)
