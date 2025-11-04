@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 14:29:22 by toferrei          #+#    #+#             */
-/*   Updated: 2025/11/04 01:14:53 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/11/04 12:29:59 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ std::string cleanInput(std::string input, char c)
 
 void RPN::calculate(double a, double b, char c)
 {
-	std::cout << "a: " << a << "b: " << b << "c: "<< c << std::endl;
 	if (c == '+')
 		this->_values.push(b + a);
 	else if (c == '-')
@@ -80,7 +79,6 @@ RPN::RPN(std::string input)
 		else
 			throw RPN::InvalidInput();
 		++it;
-		std::cout << *it << std::endl;
 		if (input.size() > 1 && it < input.end() && *it != ' ')
 			throw RPN::InvalidInput();
 	}
@@ -94,9 +92,9 @@ RPN::RPN(std::string input)
 			this->_values.push(*it - 48);
 		else if ((*it == '+' || *it == '-' || *it == '*' || *it == '/') && this->_values.size() > 1)
 		{
-			int a = this->_values.top();
+			double a = this->_values.top();
 			this->_values.pop();
-			int b = this->_values.top();
+			double b = this->_values.top();
 			this->_values.pop();
 			this->calculate(a, b, *it);
 		}
@@ -105,6 +103,8 @@ RPN::RPN(std::string input)
 	}
 	if (this->_values.size() > 1)
 		throw RPN::InvalidInput();
+	else
+		std::cout << this->_values.top() << std::endl;
 }
 
 RPN::RPN(const RPN &src)
