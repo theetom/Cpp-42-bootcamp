@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 14:09:55 by toferrei          #+#    #+#             */
-/*   Updated: 2025/11/04 16:49:39 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/11/05 15:38:40 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <iostream>
 #include <list>
 #include <vector>
+#include <list>
 #include <exception>
 
 class PmergeMe
@@ -35,7 +36,8 @@ class PmergeMe
 		};
 
 	private :
-		std::vector<u_int16_t>
+		std::vector<int> _vector;
+		std::list<int> _list;
 
 };
 
