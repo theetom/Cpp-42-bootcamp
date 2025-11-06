@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 14:09:55 by toferrei          #+#    #+#             */
-/*   Updated: 2025/11/05 17:25:15 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/11/06 17:53:40 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <list>
 #include <exception>
 #include <cstdlib>
+#include <sys/time.h>
 
 class PmergeMe
 {
@@ -30,6 +31,9 @@ class PmergeMe
 		PmergeMe(const PmergeMe &src);
 		PmergeMe &operator=(const PmergeMe &src);
 
+		void vectorSort(char **input);
+		void listSort(char **input);
+
 		class InvalidInput : public std::exception
 		{
 			public :
@@ -37,6 +41,8 @@ class PmergeMe
 		};
 
 	private :
+		double _vTime;
+		double _lTime;
 		std::vector<int> _vector;
 		std::list<int> _list;
 
