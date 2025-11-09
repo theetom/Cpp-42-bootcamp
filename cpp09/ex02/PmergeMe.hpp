@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 14:09:55 by toferrei          #+#    #+#             */
-/*   Updated: 2025/11/07 10:13:29 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/11/09 18:14:25 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,13 @@ class PmergeMe
 		void vectorSort(char **input);
 		void listSort(char **input);
 
-		class InvalidInput : public std::exception
+		class FoundNotNumber : public std::exception
+		{
+			public :
+				virtual const char *what() const throw();
+		};
+
+		class FoundReapeatedNumber : public std::exception
 		{
 			public :
 				virtual const char *what() const throw();

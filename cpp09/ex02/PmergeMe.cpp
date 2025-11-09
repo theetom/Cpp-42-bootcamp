@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 14:09:34 by toferrei          #+#    #+#             */
-/*   Updated: 2025/11/07 17:49:01 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/11/09 18:14:53 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,25 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &src)
 	return (*this);
 }
 
-void simpleParser(char **input)
+void simpleParser(char **input) //checks if all inputs are numbers while adding them to a vector (that wont be used after this parser, in order to determine if there are doubles)
 {
+	std::vector<int> tmp;
+
 	while (*input)
 	{
 		for (size_t i = 0; (*input)[i]; i++)
+		{
 			if (!std::isdigit((*input)[i]))
-				throw PmergeMe::InvalidInput();
+				throw PmergeMe::FoundNotNumber();
+		}
+		tmp.push_back(atoi(*input));
 		input++;
+	}
+	std::sort(tmp.begin(), tmp.end());
+	for (std::vector<int>::iterator it = tmp.begin() + 1; it != tmp.end(); ++it)
+	{
+		if (*it == *(it - 1))
+			throw PmergeMe::FoundReapeatedNumber();
 	}
 	
 }
@@ -130,13 +141,8 @@ void PmergeMe::vectorSort(char **input)
 	addToContainer(this->_vector, input);
 
 	size_t i = 1;
-	try
-	{	vectorActualSorting(this->_vector, i);
-	}
-	catch(std::exception &e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+	vectorActualSorting(this->_vector, i);
+
 
 
 
@@ -189,7 +195,12 @@ PmergeMe::PmergeMe(char **input)
 	std::cout << "vector " << std::fixed << this->_vTime << std::setprecision(6) << std::endl;
 }
 
-const char *PmergeMe::InvalidInput::what() const throw()
+const char *PmergeMe::FoundNotNumber::what() const throw()
 {
-	return ("Invalid Input");
+	return ("Invalid Input : Not all are numbers");
+}
+
+const char *PmergeMe::FoundReapeatedNumber::what() const throw()
+{
+	return ("Invalid Input : Some numbers are repeated");
 }
