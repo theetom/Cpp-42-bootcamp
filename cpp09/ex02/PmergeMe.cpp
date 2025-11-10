@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 14:09:34 by toferrei          #+#    #+#             */
-/*   Updated: 2025/11/09 18:14:53 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/11/10 17:34:16 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,38 +84,35 @@ void addToContainer(T &container, char **input)
 void vectorPairMaking(std::vector<int> &vector, size_t &n)
 {
 	size_t i(0);
-	// std::cout << "olamain" << std::endl;
 	while (i + n * 2 <= vector.size())
 	{
 		if (vector.at(i) > vector.at(i + n))
 		{
 			std::vector<int> tmp;
-			tmp.clear();
-				// std::cout << "ola1" << std::endl;
-
 			for (size_t m = n; m > 0; m--)
 			{
-				// std::cout << i << std::endl;
 				tmp.insert(tmp.begin(), vector.at(i));
 				vector.erase(vector.begin() + i);
-				// printContainer(vector); std::cout << std::endl;
-				// printContainer(tmp); std::cout << std::endl;
-
 			}
-				// std::cout << "ola2" << std::endl;
-
 			for (size_t m = 0; m < n; m++)
 			{
-								// std::cout << "ola3" << std::endl;
-				// std::cout << "estou =aqui " << *(vector.begin() + i + n) << std::endl;
 				vector.insert(vector.begin() + i + n, tmp.at(m));
 			}
-			// std::cout << "ola4" << std::endl;
 		}
 		i = i + (n * 2);
 	}
-	// std::cout << "estou aqui" << n << std::endl;
 	n *= 2;
+}
+
+std::vector<int>extractPend(std::vector<int> &vector, int n)
+{
+	std::vector<int> result;
+	for (std::vector<int>::iterator it = vector.begin(); it < vector.end(); ++it)
+	{
+		result.push_back(*it);
+		vector.erase(it);
+	}
+	return (result);
 }
 
 void vectorActualSorting(std::vector<int> &vector, size_t &n)
@@ -130,7 +127,18 @@ void vectorActualSorting(std::vector<int> &vector, size_t &n)
 		printContainer(vector);
 		vectorActualSorting(vector, n);
 	}
-	std::cout << std::endl;
+	// recursion is done, every second number of the sequence is the "strong"
+
+		std::vector<int> pend;
+		pend = extractPend(vector);
+
+		std::cout << std::endl;
+		std::cout << "size " << vector.size() << " strong: ";
+		printContainer(vector);
+		std::cout << std::endl << "size " << pend.size()  << " pend: ";
+		printContainer(pend);
+		std::cout << std::endl;
+
 }
 
 void PmergeMe::vectorSort(char **input)
