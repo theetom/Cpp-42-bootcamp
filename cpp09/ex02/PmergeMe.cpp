@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 14:09:34 by toferrei          #+#    #+#             */
-/*   Updated: 2025/11/10 17:34:16 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/11/11 18:59:29 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void simpleParser(char **input) //checks if all inputs are numbers while adding 
 template <typename T>
 void printContainer(T arr)
 {
-
 	for (typename T::iterator it = arr.begin(); it < arr.end(); ++it)
 	{
 		std::cout << ' ' << *it;
@@ -83,7 +82,7 @@ void addToContainer(T &container, char **input)
 
 void vectorPairMaking(std::vector<int> &vector, size_t &n)
 {
-	size_t i(0);
+	size_t i(n - 1);
 	while (i + n * 2 <= vector.size())
 	{
 		if (vector.at(i) > vector.at(i + n))
@@ -91,23 +90,23 @@ void vectorPairMaking(std::vector<int> &vector, size_t &n)
 			std::vector<int> tmp;
 			for (size_t m = n; m > 0; m--)
 			{
-				tmp.insert(tmp.begin(), vector.at(i));
-				vector.erase(vector.begin() + i);
+				tmp.push_back(vector.at(i - (n - m)));
+				vector.erase(vector.begin() + i - (n - m));
 			}
 			for (size_t m = 0; m < n; m++)
-			{
-				vector.insert(vector.begin() + i + n, tmp.at(m));
-			}
+				vector.insert(vector.begin() + i + 1, tmp.at(m));
 		}
 		i = i + (n * 2);
 	}
 	n *= 2;
 }
 
-std::vector<int>extractPend(std::vector<int> &vector, int n)
+std::vector<int>extractPend(std::vector<int> &vector, size_t &n)
 {
 	std::vector<int> result;
-	for (std::vector<int>::iterator it = vector.begin(); it < vector.end(); ++it)
+	n /= 2;
+	std::cout << n << std::endl;
+	for (std::vector<int>::iterator it = vector.begin() + n; it < vector.end() - n; ++it)
 	{
 		result.push_back(*it);
 		vector.erase(it);
@@ -120,7 +119,7 @@ void vectorActualSorting(std::vector<int> &vector, size_t &n)
 	std::cout << std::endl;
 	std::cout << "before pairing" ;
 	printContainer(vector);
-	if (vector.size() / 2 >= n)
+	if (vector.size() / 2 >= n) // <=> 
 	{
 		vectorPairMaking(vector, n);
 		std::cout << "after pairing" ;
@@ -128,17 +127,12 @@ void vectorActualSorting(std::vector<int> &vector, size_t &n)
 		vectorActualSorting(vector, n);
 	}
 	// recursion is done, every second number of the sequence is the "strong"
-
-		std::vector<int> pend;
-		pend = extractPend(vector);
-
-		std::cout << std::endl;
-		std::cout << "size " << vector.size() << " strong: ";
-		printContainer(vector);
-		std::cout << std::endl << "size " << pend.size()  << " pend: ";
+	std::vector<int> pend(extractPend(vector, n));
+	if (pend.size() != 0)
+	{
 		printContainer(pend);
 		std::cout << std::endl;
-
+	}
 }
 
 void PmergeMe::vectorSort(char **input)
