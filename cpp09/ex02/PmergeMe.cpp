@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 14:09:34 by toferrei          #+#    #+#             */
-/*   Updated: 2025/11/11 18:59:29 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/11/12 18:07:19 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,13 +105,48 @@ std::vector<int>extractPend(std::vector<int> &vector, size_t &n)
 {
 	std::vector<int> result;
 	n /= 2;
-	std::cout << n << std::endl;
-	for (std::vector<int>::iterator it = vector.begin() + n; it < vector.end() - n; ++it)
+	std::cout <<"n "<< n << std::endl;
+	std::vector<int>::iterator it = vector.begin() + n;
+	while ( n > 0 && it < vector.end() - (n + 1))
 	{
-		result.push_back(*it);
-		vector.erase(it);
+		std::cout << "it :" << *it << std::endl;
+		std::cout << "conta :" << std::distance(vector.begin(), it) % (n * 2) << std::endl;
+		if (std::distance(vector.begin(), it) % (n * 2) == 0)
+		{
+			for (size_t i = 0; i < n; i++)
+			{
+				// std::cout << *it << std::endl;
+				std::cout << "ola" << std::endl;
+				result.push_back(*(it + i));
+			}
+		}
+		it = it + n;
+	}
+	for (std::vector<int>::iterator it = result.begin(); it != result.end(); ++it)
+	{
+		vector.erase(std::find(vector.begin(), vector.end(), *it));
 	}
 	return (result);
+}
+
+void insertVector(std::vector<int> &vector, std::vector<int> &pend, size_t &n)
+{
+	(void)vector;
+	std::cout << "again n " << n << std::endl;
+	std::vector<int>::reverse_iterator it = pend.rbegin();
+	for ( it < pend.rend())
+	{
+		std::vector<int>::iterator it2 = vector.begin() + (n - 1);
+		while (*it2 >= *it && it2 < vector.end())
+			it2 = it2 + n;
+		std::cout << "it2 "<< *it2 << " and it " << *it << std::endl;
+		for (size_t i = 0; i < n; ++i)
+		{
+			std::cout << "it + i" << *(it + i) << std::endl;
+			vector.insert(it2 - i - n, *(it + i));
+		}
+		it = it + n;
+	}
 }
 
 void vectorActualSorting(std::vector<int> &vector, size_t &n)
@@ -127,11 +162,15 @@ void vectorActualSorting(std::vector<int> &vector, size_t &n)
 		vectorActualSorting(vector, n);
 	}
 	// recursion is done, every second number of the sequence is the "strong"
+	
 	std::vector<int> pend(extractPend(vector, n));
 	if (pend.size() != 0)
 	{
 		printContainer(pend);
 		std::cout << std::endl;
+		printContainer(vector);
+		std::cout << std::endl;
+		insertVector(vector, pend, n);
 	}
 }
 
