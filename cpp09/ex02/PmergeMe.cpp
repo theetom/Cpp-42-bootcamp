@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 14:09:34 by toferrei          #+#    #+#             */
-/*   Updated: 2025/11/12 23:35:55 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/11/13 16:35:46 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,11 @@ void addToContainer(T &container, char **input)
 void vectorPairMaking(std::vector<int> &vector, size_t &n)
 {
 	size_t i(n - 1);
-	while (i + n * 2 <= vector.size())
+	// std::cout << "vector size " << vector.size() << std::endl;
+	// std::cout << "this i " << i << " i + (n * 2) " << i + (n * 2) << std::endl;
+	while (i + (n) - 1 < vector.size())
 	{
+		// std::cout << "1st " << vector.at(i) << " 2nd " << vector.at(i + n) << std::endl;
 		if (vector.at(i) > vector.at(i + n))
 		{
 			std::vector<int> tmp;
@@ -97,6 +100,7 @@ void vectorPairMaking(std::vector<int> &vector, size_t &n)
 				vector.insert(vector.begin() + i + 1, tmp.at(m));
 		}
 		i = i + (n * 2);
+		// std::cout << "next i " << i << std::endl;
 	}
 	n *= 2;
 }
@@ -129,7 +133,7 @@ void insertVector(std::vector<int> &vector, std::vector<int> &pend, size_t &n)
 			{
 				for (size_t i = 0; i < n; i++)
 					vector.insert(it2 - n + 1, *(it + i));
-				printContainer(vector);
+				// printContainer(vector);
 				break ;
 			}
 			it2 = it2 + n;
@@ -145,11 +149,21 @@ void vectorActualSorting(std::vector<int> &vector, size_t &n)
 	if (vector.size() / 2 >= n) // <=> 
 	{
 		vectorPairMaking(vector, n);
+		// std::cout << "vector after pairing";
+		// printContainer(vector);
 		vectorActualSorting(vector, n);
 	}
 	// recursion is done, every second number of the sequence is the "strong"
 	
+	// std::cout << std::endl;
+	// std::cout << "vector before pend";
+	// printContainer(vector);
 	std::vector<int> pend(extractPend(vector, n));
+	// std::cout << "n " << n << std::endl;
+	// std::cout << "pend";
+	// printContainer(pend);
+	// std::cout << "vector";
+	// printContainer(vector);
 	if (pend.size() != 0)
 	{
 		insertVector(vector, pend, n);
@@ -162,6 +176,10 @@ void PmergeMe::vectorSort(char **input)
 	gettimeofday(&start, NULL);
 
 	addToContainer(this->_vector, input);
+	std::vector<int> temp (this->_vector);
+	std::cout << "After:";
+	std::sort(temp.begin(), temp.end());
+	printContainer(temp);
 	size_t n = 1;
 	vectorActualSorting(this->_vector, n);
 	gettimeofday(&end, NULL);
@@ -191,7 +209,7 @@ PmergeMe::PmergeMe(char **input)
 {
 	simpleParser(input);
 
-	std::cout << "Before:";
+	std::cout << "Input:";
 	for (char **tmp = input; *tmp; tmp++)
 		std::cout << " " << *tmp;
 	std::cout << std::endl;
@@ -213,3 +231,5 @@ const char *PmergeMe::FoundReapeatedNumber::what() const throw()
 {
 	return ("Invalid Input : Some numbers are repeated");
 }
+
+3 18 20 6 2 17 28 14 8 19 25 21 22 12 9 23 29 30 11 13
