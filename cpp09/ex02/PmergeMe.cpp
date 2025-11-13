@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 14:09:34 by toferrei          #+#    #+#             */
-/*   Updated: 2025/11/12 18:07:19 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/11/12 23:35:55 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,60 +105,46 @@ std::vector<int>extractPend(std::vector<int> &vector, size_t &n)
 {
 	std::vector<int> result;
 	n /= 2;
-	std::cout <<"n "<< n << std::endl;
 	std::vector<int>::iterator it = vector.begin() + n;
-	while ( n > 0 && it < vector.end() - (n + 1))
+	while ( n > 0 && it <= vector.end() - (n /* + 1 */))
 	{
-		std::cout << "it :" << *it << std::endl;
-		std::cout << "conta :" << std::distance(vector.begin(), it) % (n * 2) << std::endl;
 		if (std::distance(vector.begin(), it) % (n * 2) == 0)
-		{
 			for (size_t i = 0; i < n; i++)
-			{
-				// std::cout << *it << std::endl;
-				std::cout << "ola" << std::endl;
 				result.push_back(*(it + i));
-			}
-		}
 		it = it + n;
 	}
 	for (std::vector<int>::iterator it = result.begin(); it != result.end(); ++it)
-	{
 		vector.erase(std::find(vector.begin(), vector.end(), *it));
-	}
 	return (result);
 }
 
 void insertVector(std::vector<int> &vector, std::vector<int> &pend, size_t &n)
 {
-	(void)vector;
-	std::cout << "again n " << n << std::endl;
-	std::vector<int>::reverse_iterator it = pend.rbegin();
-	for ( it < pend.rend())
+	for (std::vector<int>::reverse_iterator it = pend.rbegin(); it < pend.rend(); it = it + n)
 	{
 		std::vector<int>::iterator it2 = vector.begin() + (n - 1);
-		while (*it2 >= *it && it2 < vector.end())
-			it2 = it2 + n;
-		std::cout << "it2 "<< *it2 << " and it " << *it << std::endl;
-		for (size_t i = 0; i < n; ++i)
+		while (it2 < vector.end())
 		{
-			std::cout << "it + i" << *(it + i) << std::endl;
-			vector.insert(it2 - i - n, *(it + i));
+			if (*it2 >= *it)
+			{
+				for (size_t i = 0; i < n; i++)
+					vector.insert(it2 - n + 1, *(it + i));
+				printContainer(vector);
+				break ;
+			}
+			it2 = it2 + n;
+			if (it2 > vector.end())
+				vector.push_back(*it);
 		}
-		it = it + n;
+
 	}
 }
 
 void vectorActualSorting(std::vector<int> &vector, size_t &n)
 {
-	std::cout << std::endl;
-	std::cout << "before pairing" ;
-	printContainer(vector);
 	if (vector.size() / 2 >= n) // <=> 
 	{
 		vectorPairMaking(vector, n);
-		std::cout << "after pairing" ;
-		printContainer(vector);
 		vectorActualSorting(vector, n);
 	}
 	// recursion is done, every second number of the sequence is the "strong"
@@ -166,10 +152,6 @@ void vectorActualSorting(std::vector<int> &vector, size_t &n)
 	std::vector<int> pend(extractPend(vector, n));
 	if (pend.size() != 0)
 	{
-		printContainer(pend);
-		std::cout << std::endl;
-		printContainer(vector);
-		std::cout << std::endl;
 		insertVector(vector, pend, n);
 	}
 }
@@ -180,22 +162,8 @@ void PmergeMe::vectorSort(char **input)
 	gettimeofday(&start, NULL);
 
 	addToContainer(this->_vector, input);
-
-	size_t i = 1;
-	vectorActualSorting(this->_vector, i);
-
-
-
-
-
-
-
-
-
-
-
-
-
+	size_t n = 1;
+	vectorActualSorting(this->_vector, n);
 	gettimeofday(&end, NULL);
 	this->_vTime = (end.tv_sec - start.tv_sec) * 1e6;
 	this->_vTime = (this->_vTime + (end.tv_usec - start.tv_usec)) * 1e-6;
