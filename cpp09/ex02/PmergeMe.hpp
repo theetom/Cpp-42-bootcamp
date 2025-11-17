@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 14:09:55 by toferrei          #+#    #+#             */
-/*   Updated: 2025/11/09 18:14:25 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/11/17 15:14:04 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class PmergeMe
 		PmergeMe &operator=(const PmergeMe &src);
 
 		void vectorSort(char **input);
-		void listSort(char **input);
+		void dequeSort(char **input);
 
 		class FoundNotNumber : public std::exception
 		{
@@ -49,9 +49,9 @@ class PmergeMe
 
 	private :
 		double _vTime;
-		double _lTime;
+		double _dqTime;
 		std::vector<int> _vector;
-		std::list<int> _list;
+		std::deque<int> _deque;
 
 };
 

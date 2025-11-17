@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PmergeMe.cpp                                       :+:      :+:    :+:   */
+/*   PmergeMecopy.cpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 14:09:34 by toferrei          #+#    #+#             */
-/*   Updated: 2025/11/17 12:52:30 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/11/17 15:49:16 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ PmergeMe::~PmergeMe()
 	
 }
 
-PmergeMe::PmergeMe(const PmergeMe &src): _vector(src._vector), _list(src._list)
+PmergeMe::PmergeMe(const PmergeMe &src): _vector(src._vector), _deque(src._deque)
 {
 	
 }
@@ -31,7 +31,7 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &src)
 {
 	if(this != &src)
 	{
-		this->_list = src._list;
+		this->_deque = src._deque;
 		this->_vector = src._vector;
 	}
 	return (*this);
@@ -80,18 +80,15 @@ void addToContainer(T &container, char **input)
 	}
 }
 
-
-void vectorPairMaking(std::vector<int> &vector, size_t &n)
+template<typename T>
+void vectorPairMaking(T &vector, size_t &n)
 {
 	size_t i(n - 1);
-	// std::cout << "vector size " << vector.size() << std::endl;
-	// std::cout << "this i " << i << " i + (n * 2) " << i + (n * 2) << std::endl;
 	while (i + (n) - 1 < vector.size())
 	{
-		// std::cout << "1st " << vector.at(i) << " 2nd " << vector.at(i + n) << std::endl;
 		if (vector.at(i) > vector.at(i + n))
 		{
-			std::vector<int> tmp;
+			T tmp;
 			for (size_t m = n; m > 0; m--)
 			{
 				tmp.push_back(vector.at(i - (n - m)));
@@ -101,16 +98,16 @@ void vectorPairMaking(std::vector<int> &vector, size_t &n)
 				vector.insert(vector.begin() + i + 1, tmp.at(m));
 		}
 		i = i + (n * 2);
-		// std::cout << "next i " << i << std::endl;
 	}
 	n *= 2;
 }
 
-std::vector<int>extractPend(std::vector<int> &vector, size_t &n)
+template <typename T>
+T extractPend(T &vector, size_t &n)
 {
-	std::vector<int> result;
+	T result;
 	n /= 2;
-	std::vector<int>::iterator it = vector.begin() + n;
+	typename T::iterator it = vector.begin() + n;
 	while ( n > 0 && it <= vector.end() - n)
 	{
 		if (std::distance(vector.begin(), it) % (n * 2) == 0)
@@ -118,24 +115,23 @@ std::vector<int>extractPend(std::vector<int> &vector, size_t &n)
 				result.push_back(*(it + i));
 		it = it + n;
 	}
-	for (std::vector<int>::iterator it = result.begin(); it != result.end(); ++it)
+	for (typename T::iterator it = result.begin(); it != result.end(); ++it)
 		vector.erase(std::find(vector.begin(), vector.end(), *it));
 	return (result);
 }
 
-void insertVector(std::vector<int> &vector, std::vector<int> &pend, size_t &n)
+template <typename T>
+void insertVector(T &vector, T &pend, size_t &n)
 {
-	for (std::vector<int>::iterator it = pend.end() - 1; it >= pend.begin(); it = it - n)
+	for (typename T::iterator it = pend.end() - 1; it >= pend.begin(); it = it - n)
 	{
-		std::vector<int>::iterator it2 = vector.begin() + (n - 1);
+		typename T::iterator it2 = vector.begin() + (n - 1);
 		while (it2 < vector.end())
 		{
-			std::cout << "it2 " << *it2 << " it " << *it << std::endl;
 			if (*it2 >= *it)
 			{
 				for (size_t i = 0; i < n; i++)
 					vector.insert(it2 - n + 1, *(it - i));
-				// printContainer(vector);
 				break ;
 			}
 			it2 = it2 + n;
@@ -151,30 +147,87 @@ void insertVector(std::vector<int> &vector, std::vector<int> &pend, size_t &n)
 	}
 }
 
-void vectorActualSorting(std::vector<int> &vector, size_t &n)
+template <typename T>
+void insertDeque(T &vector, T &pend, size_t &n)
 {
-	if (vector.size() / 2 >= n) // <=> 
+	for (typename T::iterator it = pend.end() - 1; it >= pend.begin(); it = it - n)
 	{
-		vectorPairMaking(vector, n);
-		std::cout << "vector after pairing";
+		typename T::iterator it2 = vector.begin() + (n - 1);
+		while (it2 < vector.end())
+		{
+			std::cout << "it2 " << *it2 << " it " << *it << std::endl;
+			if (*it2 >= *it)
+			{
+				for (size_t i = 0; i < n; i++)
+					vector.insert(it2 - n + 1, *(it - i));
+				break ;
+			}
+			it2 = it2 + n;
+			if (it2 > vector.end())
+			{
+				for (size_t i = n; i > 0; i--)
+					vector.push_back(*(it - i + 1));
+				break ;
+			}
+		}
 		printContainer(vector);
-		std::cout << "vector size :" << vector.size() << std::endl;
-		vectorActualSorting(vector, n);
+
+	}
+}
+
+template <typename T>
+void actualVectorSorting(T &container, size_t &n)
+{
+	if (container.size() / 2 >= n) // <=> 
+	{
+		vectorPairMaking(container, n);
+		std::cout << "vector after pairing";
+		printContainer(container);
+		std::cout << "vector size :" << container.size() << std::endl;
+		actualVectorSorting(container, n);
 	}
 	// recursion is done, every second number of the sequence is the "strong"
 	
 	std::cout << std::endl;
-	std::cout << "vector size before pend" << vector.size() << std::endl << "vector before pend";
-	printContainer(vector);
-	std::vector<int> pend(extractPend(vector, n));
+	std::cout << "vector size before pend" << container.size() << std::endl << "vector before pend";
+	printContainer(container);
+	T pend(extractPend(container, n));
 	std::cout << "n " << n << std::endl;
 	std::cout << "pend size " << pend.size() << "pend";
 	printContainer(pend);
-	std::cout << "vector size " << vector.size() << "vector";
-	printContainer(vector);
+	std::cout << "vector size " << container.size() << "vector";
+	printContainer(container);
 	if (pend.size() != 0)
 	{
-		insertVector(vector, pend, n);
+		insertVector(container, pend, n);
+	}
+}
+
+template <typename T>
+void actualDequeSorting(T &container, size_t &n)
+{
+	if (container.size() / 2 >= n) // <=> 
+	{
+		vectorPairMaking(container, n);
+		std::cout << "vector after pairing";
+		printContainer(container);
+		std::cout << "vector size :" << container.size() << std::endl;
+		actualDequeSorting(container, n);
+	}
+	// recursion is done, every second number of the sequence is the "strong"
+	
+	std::cout << std::endl;
+	std::cout << "vector size before pend" << container.size() << std::endl << "vector before pend";
+	printContainer(container);
+	T pend(extractPend(container, n));
+	std::cout << "n " << n << std::endl;
+	std::cout << "pend size " << pend.size() << "pend";
+	printContainer(pend);
+	std::cout << "vector size " << container.size() << "vector";
+	printContainer(container);
+	if (pend.size() != 0)
+	{
+		insertDeque(container, pend, n);
 	}
 }
 
@@ -188,25 +241,26 @@ void PmergeMe::vectorSort(char **input)
 	std::cout << "After:";
 	std::sort(temp.begin(), temp.end());
 	printContainer(temp);
-	size_t n = 1; (void)n;
-	// vectorActualSorting(this->_vector, n);
+	size_t n = 1;
+	actualVectorSorting(this->_vector, n);
 	gettimeofday(&end, NULL);
 	this->_vTime = (end.tv_sec - start.tv_sec) * 1e6;
 	this->_vTime = (this->_vTime + (end.tv_usec - start.tv_usec)) * 1e-6;
 }
 
-void PmergeMe::listSort(char **input)
+void PmergeMe::dequeSort(char **input)
 {
 	(void)input;
 	struct timeval start, end;
 	gettimeofday(&start, NULL);
-	addToContainer(this->_list, input);
-	std::list<int> temp (this->_list);
+	addToContainer(this->_deque, input);
+	size_t n = 1;
+	actualDequeSorting(this->_deque, n);
 
 
 	gettimeofday(&end, NULL);
-	this->_lTime = (end.tv_sec - start.tv_sec) * 1e6;
-	this->_lTime = (this->_lTime + (end.tv_usec - start.tv_usec)) * 1e-6;
+	this->_dqTime = (end.tv_sec - start.tv_sec) * 1e6;
+	this->_dqTime = (this->_dqTime + (end.tv_usec - start.tv_usec)) * 1e-6;
 }
 
 PmergeMe::PmergeMe(char **input)
@@ -217,13 +271,13 @@ PmergeMe::PmergeMe(char **input)
 	for (char **tmp = input; *tmp; tmp++)
 		std::cout << " " << *tmp;
 	std::cout << std::endl;
-	this->listSort(input);
+	this->dequeSort(input);
 	this->vectorSort(input);
 	std::cout << std::endl << "After:";
 	printContainer(this->_vector);
 	std::cout << std::endl << "After:";
-	printContainer(this->_list);
-	std::cout << "list " << std::fixed << this->_lTime << std::setprecision(6) << std::endl;
+	printContainer(this->_deque);
+	std::cout << "deque " << std::fixed << this->_dqTime << std::setprecision(6) << std::endl;
 	std::cout << "vector " << std::fixed << this->_vTime << std::setprecision(6) << std::endl;
 }
 
