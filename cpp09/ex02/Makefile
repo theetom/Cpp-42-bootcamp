@@ -6,14 +6,14 @@
 #    By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/03 14:37:28 by toferrei          #+#    #+#              #
-#    Updated: 2025/11/17 12:53:54 by toferrei         ###   ########.fr        #
+#    Updated: 2025/11/18 13:00:18 by toferrei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	PmergeMe
 
 SOURCE		=	main.cpp \
-				PmergeMecopy.cpp
+				PmergeMe.cpp
 				
 OBJ_DIR		=	Objects/
 

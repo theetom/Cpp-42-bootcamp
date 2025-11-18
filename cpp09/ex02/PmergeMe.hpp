@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 14:09:55 by toferrei          #+#    #+#             */
-/*   Updated: 2025/11/17 15:14:04 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/11/18 16:25:12 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #include <cstdlib>
 #include <sys/time.h>
 #include <bits/stdc++.h>
+#include <cmath>
 
 class PmergeMe
 {

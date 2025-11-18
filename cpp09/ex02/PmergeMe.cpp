@@ -6,11 +6,14 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 14:09:34 by toferrei          #+#    #+#             */
-/*   Updated: 2025/11/17 12:52:30 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/11/18 16:46:40 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+
+int comp(0);
+int dcomp(0);
 
 PmergeMe::PmergeMe()
 {
@@ -22,7 +25,7 @@ PmergeMe::~PmergeMe()
 	
 }
 
-PmergeMe::PmergeMe(const PmergeMe &src): _vector(src._vector), _list(src._list)
+PmergeMe::PmergeMe(const PmergeMe &src): _vector(src._vector), _deque(src._deque)
 {
 	
 }
@@ -31,11 +34,17 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &src)
 {
 	if(this != &src)
 	{
-		this->_list = src._list;
+		this->_deque = src._deque;
 		this->_vector = src._vector;
 	}
 	return (*this);
 }
+
+int jacobstalNumber(int n)
+{
+	return (round((pow(2, n + 1) + pow(-1, n)) / 3));
+}
+
 
 void simpleParser(char **input) //checks if all inputs are numbers while adding them to a vector (that wont be used after this parser, in order to determine if there are doubles)
 {
@@ -81,17 +90,16 @@ void addToContainer(T &container, char **input)
 }
 
 
-void vectorPairMaking(std::vector<int> &vector, size_t &n)
+template<typename T>
+void pairMaking(T &vector, size_t &n)
 {
 	size_t i(n - 1);
-	// std::cout << "vector size " << vector.size() << std::endl;
-	// std::cout << "this i " << i << " i + (n * 2) " << i + (n * 2) << std::endl;
 	while (i + (n) - 1 < vector.size())
 	{
-		// std::cout << "1st " << vector.at(i) << " 2nd " << vector.at(i + n) << std::endl;
+		comp++;
 		if (vector.at(i) > vector.at(i + n))
 		{
-			std::vector<int> tmp;
+			T tmp;
 			for (size_t m = n; m > 0; m--)
 			{
 				tmp.push_back(vector.at(i - (n - m)));
@@ -101,16 +109,16 @@ void vectorPairMaking(std::vector<int> &vector, size_t &n)
 				vector.insert(vector.begin() + i + 1, tmp.at(m));
 		}
 		i = i + (n * 2);
-		// std::cout << "next i " << i << std::endl;
 	}
 	n *= 2;
 }
 
-std::vector<int>extractPend(std::vector<int> &vector, size_t &n)
+template <typename T>
+T extractPend(T &vector, size_t &n)
 {
-	std::vector<int> result;
+	T result;
 	n /= 2;
-	std::vector<int>::iterator it = vector.begin() + n;
+	typename T::iterator it = vector.begin() + n;
 	while ( n > 0 && it <= vector.end() - n)
 	{
 		if (std::distance(vector.begin(), it) % (n * 2) == 0)
@@ -118,24 +126,26 @@ std::vector<int>extractPend(std::vector<int> &vector, size_t &n)
 				result.push_back(*(it + i));
 		it = it + n;
 	}
-	for (std::vector<int>::iterator it = result.begin(); it != result.end(); ++it)
+	for (typename T::iterator it = result.begin(); it != result.end(); ++it)
 		vector.erase(std::find(vector.begin(), vector.end(), *it));
 	return (result);
 }
 
 void insertVector(std::vector<int> &vector, std::vector<int> &pend, size_t &n)
 {
+	std::cout << "pend.size " << pend.size() << " n " << n << std::endl;
+	std::cout << "jacobstal :" << jacobstalNumber(pend.size() / n) - jacobstalNumber(pend.size() / n - 1)
+			<< "\ninput :" << pend.size() / n << std::endl;
 	for (std::vector<int>::iterator it = pend.end() - 1; it >= pend.begin(); it = it - n)
 	{
 		std::vector<int>::iterator it2 = vector.begin() + (n - 1);
 		while (it2 < vector.end())
 		{
-			std::cout << "it2 " << *it2 << " it " << *it << std::endl;
+			comp++;
 			if (*it2 >= *it)
 			{
 				for (size_t i = 0; i < n; i++)
 					vector.insert(it2 - n + 1, *(it - i));
-				// printContainer(vector);
 				break ;
 			}
 			it2 = it2 + n;
@@ -146,35 +156,67 @@ void insertVector(std::vector<int> &vector, std::vector<int> &pend, size_t &n)
 				break ;
 			}
 		}
-		printContainer(vector);
+	}
+}
 
+template <typename T>
+void insertDeque(T &vector, T &pend, size_t &n)
+{
+	for (typename T::iterator it = pend.end() - 1; it >= pend.begin(); it = it - n)
+	{
+		typename T::iterator it2 = vector.begin() + (n - 1);
+		while (it2 < vector.end())
+		{
+			// std::cout << "it2 " << *it2 << " it " << *it << std::endl;
+			comp++;
+			if (*it2 >= *it)
+			{
+				T tmp;
+				typename T::iterator itToCompare = it2;
+				for (size_t i = 0; i < n; i++)
+				{
+					tmp.push_front(*(it - i));
+				}
+				vector.insert(it2 - n + 1, tmp.begin(), tmp.end());
+				break ;
+			}
+			it2 = it2 + n;
+			if (it2 > vector.end())
+			{
+				for (size_t i = n; i > 0; i--)
+					vector.push_back(*(it - i + 1));
+				break ;
+			}
+		}
 	}
 }
 
 void vectorActualSorting(std::vector<int> &vector, size_t &n)
 {
-	if (vector.size() / 2 >= n) // <=> 
+	if (vector.size() / 2 >= n) 
 	{
-		vectorPairMaking(vector, n);
-		std::cout << "vector after pairing";
-		printContainer(vector);
-		std::cout << "vector size :" << vector.size() << std::endl;
+		pairMaking(vector, n);
 		vectorActualSorting(vector, n);
 	}
-	// recursion is done, every second number of the sequence is the "strong"
-	
-	std::cout << std::endl;
-	std::cout << "vector size before pend" << vector.size() << std::endl << "vector before pend";
-	printContainer(vector);
 	std::vector<int> pend(extractPend(vector, n));
-	std::cout << "n " << n << std::endl;
-	std::cout << "pend size " << pend.size() << "pend";
-	printContainer(pend);
-	std::cout << "vector size " << vector.size() << "vector";
-	printContainer(vector);
 	if (pend.size() != 0)
 	{
 		insertVector(vector, pend, n);
+	}
+}
+
+template <typename T>
+void actualSorting(T &container, size_t &n)
+{
+	if (container.size() / 2 >= n)
+	{
+		pairMaking(container, n);
+		actualSorting(container, n);
+	}
+	T pend(extractPend(container, n));
+	if (pend.size() != 0)
+	{
+		insertDeque(container, pend, n);
 	}
 }
 
@@ -185,28 +227,39 @@ void PmergeMe::vectorSort(char **input)
 
 	addToContainer(this->_vector, input);
 	std::vector<int> temp (this->_vector);
-	std::cout << "After:";
+	std::cout << "\nSorted:";
 	std::sort(temp.begin(), temp.end());
 	printContainer(temp);
 	size_t n = 1; (void)n;
-	// vectorActualSorting(this->_vector, n);
+	vectorActualSorting(this->_vector, n);
 	gettimeofday(&end, NULL);
 	this->_vTime = (end.tv_sec - start.tv_sec) * 1e6;
 	this->_vTime = (this->_vTime + (end.tv_usec - start.tv_usec)) * 1e-6;
 }
 
-void PmergeMe::listSort(char **input)
+void PmergeMe::dequeSort(char **input)
 {
 	(void)input;
 	struct timeval start, end;
 	gettimeofday(&start, NULL);
-	addToContainer(this->_list, input);
-	std::list<int> temp (this->_list);
+	addToContainer(this->_deque, input);
+	size_t n = 1;
+	actualSorting(this->_deque, n);
 
 
 	gettimeofday(&end, NULL);
-	this->_lTime = (end.tv_sec - start.tv_sec) * 1e6;
-	this->_lTime = (this->_lTime + (end.tv_usec - start.tv_usec)) * 1e-6;
+	this->_dqTime = (end.tv_sec - start.tv_sec) * 1e6;
+	this->_dqTime = (this->_dqTime + (end.tv_usec - start.tv_usec)) * 1e-6;
+}
+
+int F(int n)
+{
+    int sum = 0;
+    for (int k = 1; k <= n; ++k) {
+        double value = (3.0 / 4.0) * k;
+        sum += static_cast<int>(ceil(log2(value)));
+    }
+    return sum;
 }
 
 PmergeMe::PmergeMe(char **input)
@@ -217,14 +270,18 @@ PmergeMe::PmergeMe(char **input)
 	for (char **tmp = input; *tmp; tmp++)
 		std::cout << " " << *tmp;
 	std::cout << std::endl;
-	this->listSort(input);
+	this->dequeSort(input);
+	dcomp = comp;
+	comp = 0;
 	this->vectorSort(input);
-	std::cout << std::endl << "After:";
+	std::cout << std::endl << "After deque :";
+	printContainer(this->_deque);
+	std::cout << "deque " << std::fixed << this->_dqTime << std::setprecision(6) << std::endl;
+	std::cout << "deque comp " << dcomp << " thoeretical max " << F(_deque.size()) << std::endl;
+	std::cout << std::endl << "After vector:";
 	printContainer(this->_vector);
-	std::cout << std::endl << "After:";
-	printContainer(this->_list);
-	std::cout << "list " << std::fixed << this->_lTime << std::setprecision(6) << std::endl;
 	std::cout << "vector " << std::fixed << this->_vTime << std::setprecision(6) << std::endl;
+	std::cout << "vector comp " << comp << " thoeretical max " << F(_vector.size()) << std::endl;
 }
 
 const char *PmergeMe::FoundNotNumber::what() const throw()
