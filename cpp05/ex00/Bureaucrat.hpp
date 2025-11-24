@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 11:00:13 by toferrei          #+#    #+#             */
-/*   Updated: 2025/09/25 15:37:07 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/11/24 11:20:46 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ class Bureaucrat
 		std::string getName() const;
 		
 		int getGrade() const;
-		// void setGrade(int newGrade);
 
 		void increaseGrade();
 		void decreaseGrade();

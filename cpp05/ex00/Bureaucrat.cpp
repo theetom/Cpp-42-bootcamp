@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 11:00:23 by toferrei          #+#    #+#             */
-/*   Updated: 2025/09/25 18:13:10 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/11/24 11:20:35 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,21 @@ Bureaucrat::Bureaucrat(): _name("default"),
 	std::cout << "Default Constructor" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade): _name(name)//,
-														//_grade(grade)
+Bureaucrat::Bureaucrat(std::string name, int grade): _name(name)
 {
 	std::cout << "Name and Grade Constructor" << std::endl;
-		if (grade < 1)
-			throw Bureaucrat::GradeTooHighException();
-		else if (grade > 150)
-			throw Bureaucrat::GradeTooLowException();
-		else
-			this->_grade = grade;
+	if (grade < 1)
+		throw Bureaucrat::GradeTooHighException();
+	else if (grade > 150)
+		throw Bureaucrat::GradeTooLowException();
+	else
+		this->_grade = grade;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &copy): _name(copy._name),
 												_grade(copy._grade)
 {
 	std::cout << "Copy Constructor" << std::endl;
-
 }
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &src)
@@ -43,7 +41,6 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &src)
 
 	if (this != &src)
 	{
-		// this->_name = src._name; doesnt make sense because const name
 		this->_grade = src._grade;
 	}
 	return (*this);
@@ -52,7 +49,6 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &src)
 Bureaucrat::~Bureaucrat()
 {
 	std::cout << "Default Destructor for " << this->getName() << std::endl;
-
 }
 
 std::string Bureaucrat::getName() const
