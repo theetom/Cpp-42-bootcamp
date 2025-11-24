@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 14:09:34 by toferrei          #+#    #+#             */
-/*   Updated: 2025/11/18 16:46:40 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/11/24 11:13:30 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -255,7 +255,8 @@ void PmergeMe::dequeSort(char **input)
 int F(int n)
 {
     int sum = 0;
-    for (int k = 1; k <= n; ++k) {
+    for (int k = 1; k <= n; ++k)
+	{
         double value = (3.0 / 4.0) * k;
         sum += static_cast<int>(ceil(log2(value)));
     }
