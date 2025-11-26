@@ -6,12 +6,12 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 18:12:57 by toferrei          #+#    #+#             */
-/*   Updated: 2025/10/13 14:34:24 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/11/26 11:54:48 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarTypeConverter.hpp"
-#include <climits>
+
 
 void convertSpecial(std::string str)
 {
@@ -69,8 +69,8 @@ void convertInt(std::string str)
 		else
 			std::cout << "char: impossible" << std::endl;
 		std::cout << "int: " << i << std::endl;
-		std::cout << "float: " << static_cast<float>(i) <<".0f" << std::endl;
-		std::cout << "double: " << static_cast<double>(i) <<".0" << std::endl;
+		std::cout << std::fixed << std::setprecision(1) << "float: " << static_cast<float>(i) <<"f" << std::endl;
+		std::cout << "double: " << static_cast<double>(i) << std::endl;
 	}
 	else
 		throw ScalarTypeConverter::InvalidInput();
@@ -80,7 +80,7 @@ long gettingDecimals(std::string str)
 {
 	std::size_t found = str.find('.'); 
 
-	std::cout << (str.substr(found + 1)).c_str() << std::endl;
+	// std::cout << (str.substr(found + 1)).c_str() << std::endl;
 	if (found != std::string::npos)
 	{
 		return (atol((str.substr(found + 1)).c_str()));
@@ -92,10 +92,6 @@ long gettingDecimals(std::string str)
 void convertFloat(std::string str)
 {
 	float f = strtof(str.c_str(), NULL);
-
-	
-	std::cout << str << std::endl;
-
 	long i = gettingDecimals(str);
 
 	if (f >= CHAR_MIN && f <= CHAR_MAX)
@@ -125,9 +121,6 @@ void convertFloat(std::string str)
 void convertDouble(std::string str)
 {
 	double f = strtod(str.c_str(), NULL);
-
-	std::cout << str << std::endl;
-
 	long i = gettingDecimals(str);
 
 	if (f >= CHAR_MIN && f <= CHAR_MAX)

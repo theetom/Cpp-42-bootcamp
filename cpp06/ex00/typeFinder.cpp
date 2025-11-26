@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 15:13:14 by toferrei          #+#    #+#             */
-/*   Updated: 2025/10/08 18:27:12 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/11/26 12:00:44 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,13 @@ bool isFloat(std::string str, int length)
 		|| (i > 0 && str[i] == '.' && !std::isdigit(str[i - 1]) && !std::isdigit(str[i + 1]))
 		|| (!isdigit(str[i]) && !charFloat(str[i]))
 		|| (str[i] == 'f' && i != length - 1)
-		|| (i == length - 1 && str[i] != 'f'))
+		|| (i == length - 1 && str[i] != 'f')
+		|| (str[str.size() - 1] == 'f' && !std::isdigit(str[str.size() - 2])))
 			return 0;
 	}
+	long i = atol(str.c_str());
+	if (i < INT_MIN && i > INT_MAX)
+		throw ScalarTypeConverter::InvalidInput();
 	return 1;
 }
 
@@ -86,9 +90,13 @@ bool isDouble(std::string str)
 		|| str[0] == '.'
 		|| point > 1
 		|| (i > 0 && str[i] == '.' && !std::isdigit(str[i - 1]) && !std::isdigit(str[i + 1]))
-		|| (!isdigit(str[i]) && !charDouble(str[i])))
+		|| (!isdigit(str[i]) && !charDouble(str[i]))
+		|| (!isdigit(str[str.size() - 1])))
 			return 0;
 	}
+	long i = atol(str.c_str());
+	if (i < INT_MIN && i > INT_MAX)
+		throw ScalarTypeConverter::InvalidInput();
 	return 1;
 }
 

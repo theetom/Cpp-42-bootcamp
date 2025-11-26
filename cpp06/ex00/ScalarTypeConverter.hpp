@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:30:18 by toferrei          #+#    #+#             */
-/*   Updated: 2025/10/09 17:25:22 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/11/25 15:54:25 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <iomanip>
+#include <climits>
 
 enum e_Type
 {
