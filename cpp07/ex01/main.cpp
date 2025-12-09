@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 13:50:06 by toferrei          #+#    #+#             */
-/*   Updated: 2025/10/15 14:31:01 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/12/09 14:38:18 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,12 @@ int main( void )
 
 	::iter(arr, 3, ::multiply);
 	::print(arr, 3);
+
+
+	const int arr2[] = {22, 1 ,121};
+
+	::iter(arr2, 3, ::print);
+	::print(arr2, 3);
 
 	std::string str[] = {"ola", "como", "estamos"};
 

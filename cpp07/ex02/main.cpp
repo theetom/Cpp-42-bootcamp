@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:47:20 by toferrei          #+#    #+#             */
-/*   Updated: 2025/10/16 15:43:05 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/12/09 14:43:30 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int main()
 {
 	Array<int> test;
 	Array<int> arr(1);
+
+	std::cout << "arr size" << arr.size() << std::endl;
 
 	std::cout << test;
 	arr[0] = 21;

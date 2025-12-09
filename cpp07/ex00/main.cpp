@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 13:50:06 by toferrei          #+#    #+#             */
-/*   Updated: 2025/10/15 14:00:59 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/12/09 14:03:59 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main( void )
 	std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;
 	std::string c = "chaine1";
 	std::string d = "chaine2";
-	::swap(c, d);
+	swap(c, d);
 	std::cout << "c = " << c << ", d = " << d << std::endl;
 	std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
 	std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;

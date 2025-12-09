@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 14:02:18 by toferrei          #+#    #+#             */
-/*   Updated: 2025/10/15 14:28:09 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/12/09 14:39:17 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,17 @@
 
 #include <iostream>
 
-template <typename T, typename F> void iter(T *arr, const int length, F foo)
+template <typename T>
+void iter(const T *arr, const int length, void(*foo)(const T &))
+{
+	for (int i = 0; i < length; i++)
+	{
+		foo(arr[i]);
+	}
+}
+
+template <typename T>
+void iter(T *arr, const int length, void(*foo)(T &))
 {
 	for (int i = 0; i < length; i++)
 	{
@@ -30,6 +40,13 @@ template <typename T> void print(T *arr, const int length)
 	{
 		std::cout << arr[i] << std::endl;
 	}
+}
+
+
+template <typename T> 
+void print(const T &f)
+{
+	std::cout << f << std::endl;
 }
 
 #endif
