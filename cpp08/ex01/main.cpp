@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 17:10:29 by toferrei          #+#    #+#             */
-/*   Updated: 2025/10/23 13:13:53 by toferrei         ###   ########.fr       */
+/*   Updated: 2026/02/18 13:05:26 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,16 @@ int main()
 		std::cerr << e.what() << std::endl;
 	}
 	
-	// for (unsigned int i = 0; i < sp.getArray().size(); i++)
-	// {
-	// 	std::cout << sp.getArray().at(i) << std::endl;
-	// }
+	std::cout << "array" << std::endl;
+	for (unsigned int i = 0; i < sp.getArray().size(); i++)
+	{
+		std::cout << sp.getArray().at(i) << std::endl;
+	}
 
 	try
 	{
-		std::cout << sp.shortestSpan() << std::endl;
-		std::cout << sp.longestSpan() << std::endl;
+		std::cout << "shortest span:" << sp.shortestSpan() << std::endl;
+		std::cout << "longest span:" << sp.longestSpan() << std::endl;
 	}
 	catch(const std::exception &e)
 	{
@@ -52,23 +53,32 @@ int main()
 
 	struct timeval time;
 	gettimeofday(&time, NULL);
-	srand(hash3(time.tv_sec, time.tv_usec, getpid()));
-	std::vector<int> tmp;
+	// srand(hash3(time.tv_sec, time.tv_usec, getpid()));
+	srand(time.tv_usec);
+	// std::vector<int> tmp;
 	Span test(100000);
 	try
 	{
+		std::cout << "random array" << std::endl;
 		for (int i = 0; i < 50000; i++)
 		{
-			tmp.push_back(rand());
+			// tmp.push_back(rand());
+			test.addNumber(rand());
 		}
-		test.addNumber(tmp.begin(), tmp.end());
-		std::cout << test.shortestSpan() << std::endl;
-		std::cout << test.longestSpan() << std::endl;
-		std::cout << test.getArray().size() << std::endl;
-		test.addNumber(tmp.begin(), tmp.end());
-		std::cout << test.shortestSpan() << std::endl;
-		std::cout << test.longestSpan() << std::endl;
-		std::cout << test.getArray().size() << std::endl;
+		// test.addNumber(tmp.begin(), tmp.end());
+		std::cout << "shortest span:" << test.shortestSpan() << std::endl;
+		std::cout << "longest span:" << test.longestSpan() << std::endl;
+		std::cout << "array size:" << test.getArray().size() << std::endl;
+		// test.addNumber(tmp.begin(), tmp.end());
+		for (int i = 0; i < 50000; i++)
+		{
+			// tmp.push_back(rand());
+			test.addNumber(rand());
+		}
+		std::cout << "shortest span:" << test.shortestSpan() << std::endl;
+		std::cout << "longest span:" << test.longestSpan() << std::endl;
+		std::cout << "array size:" << test.getArray().size() << std::endl;
+		test.addNumber(rand());
 	}
 	catch(const std::exception& e)
 	{

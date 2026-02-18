@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 14:32:51 by toferrei          #+#    #+#             */
-/*   Updated: 2025/10/21 16:53:35 by toferrei         ###   ########.fr       */
+/*   Updated: 2026/02/18 12:44:59 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int main ()
 		{
 			std::cout << *it << std::endl;
 		}
-		std::cout << *easyfind(arr, 50) << std::endl;
+		std::cout << "number to be found: 50" << "result:" << *easyfind(arr, 50) << std::endl;
 	}
 	catch (std::exception &e)
 	{
@@ -47,7 +47,7 @@ int main ()
 		{
 			std::cout << *it << std::endl;
 		}
-		std::cout << *easyfind(arr, 40) << std::endl;
+		std::cout << "number to be found: 40 " << "result: " << *easyfind(arr, 40) << std::endl;
 	}
 	catch (std::exception &e)
 	{
@@ -60,7 +60,7 @@ int main ()
 	ola = "50";
 	try
 	{
-		std::cout << *easyfind(arr, 50)<< std::endl;
+		std::cout << "number to be found: 50 " << "result: " << *easyfind(arr, 50)<< std::endl;
 	}
 	catch(std::exception& e)
 	{
@@ -76,14 +76,14 @@ int main ()
 	}
 	try
 	{
-		std::cout << *easyfind(queue, 20)<< std::endl;
+		std::cout << "number to be found: 20 " << "result: " << *easyfind(queue, 20)<< std::endl;
 	}
 	catch(std::exception& e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
 
-	std::cout << "\n List Erase \n" << std::endl;
+	std::cout << "\n List Erase/Replace \n" << std::endl;
 
 	std::list<int> list;
 	for (int i = 0; i < 50; i += 10)
