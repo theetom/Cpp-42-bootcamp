@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 14:09:34 by toferrei          #+#    #+#             */
-/*   Updated: 2025/11/24 11:13:30 by toferrei         ###   ########.fr       */
+/*   Updated: 2026/02/19 15:16:50 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void pairMaking(T &vector, size_t &n)
 	while (i + (n) - 1 < vector.size())
 	{
 		comp++;
-		if (vector.at(i) > vector.at(i + n))
+		if (i + n < vector.size() && vector.at(i) > vector.at(i + n))
 		{
 			T tmp;
 			for (size_t m = n; m > 0; m--)
@@ -133,9 +133,9 @@ T extractPend(T &vector, size_t &n)
 
 void insertVector(std::vector<int> &vector, std::vector<int> &pend, size_t &n)
 {
-	std::cout << "pend.size " << pend.size() << " n " << n << std::endl;
+/* 	std::cout << "pend.size " << pend.size() << " n " << n << std::endl;
 	std::cout << "jacobstal :" << jacobstalNumber(pend.size() / n) - jacobstalNumber(pend.size() / n - 1)
-			<< "\ninput :" << pend.size() / n << std::endl;
+			<< "\ninput :" << pend.size() / n << std::endl; */
 	for (std::vector<int>::iterator it = pend.end() - 1; it >= pend.begin(); it = it - n)
 	{
 		std::vector<int>::iterator it2 = vector.begin() + (n - 1);
@@ -149,7 +149,7 @@ void insertVector(std::vector<int> &vector, std::vector<int> &pend, size_t &n)
 				break ;
 			}
 			it2 = it2 + n;
-			if (it2 > vector.end())
+			if (it2 >= vector.end())
 			{
 				for (size_t i = n; i > 0; i--)
 					vector.push_back(*(it - i + 1));
@@ -162,28 +162,34 @@ void insertVector(std::vector<int> &vector, std::vector<int> &pend, size_t &n)
 template <typename T>
 void insertDeque(T &vector, T &pend, size_t &n)
 {
+/* 	std::cout << "pend.size " << pend.size() << " n " << n << std::endl;
+	std::cout << "jacobstal :" << jacobstalNumber(pend.size() / n) - jacobstalNumber(pend.size() / n - 1)
+			<< "\ninput :" << pend.size() / n << std::endl; */
 	for (typename T::iterator it = pend.end() - 1; it >= pend.begin(); it = it - n)
 	{
 		typename T::iterator it2 = vector.begin() + (n - 1);
 		while (it2 < vector.end())
 		{
-			// std::cout << "it2 " << *it2 << " it " << *it << std::endl;
 			comp++;
 			if (*it2 >= *it)
 			{
 				T tmp;
-				typename T::iterator itToCompare = it2;
-				for (size_t i = 0; i < n; i++)
+				for (size_t i = 0; i < n; ++i)
 				{
 					tmp.push_front(*(it - i));
+				}
+				if (it2 == vector.begin())
+				{
+					vector.insert(it2, tmp.begin(), tmp.end());
+					break ;
 				}
 				vector.insert(it2 - n + 1, tmp.begin(), tmp.end());
 				break ;
 			}
 			it2 = it2 + n;
-			if (it2 > vector.end())
+			if (it2 >= vector.end())
 			{
-				for (size_t i = n; i > 0; i--)
+				for (size_t i = n; i > 0; --i)
 					vector.push_back(*(it - i + 1));
 				break ;
 			}
@@ -278,11 +284,11 @@ PmergeMe::PmergeMe(char **input)
 	std::cout << std::endl << "After deque :";
 	printContainer(this->_deque);
 	std::cout << "deque " << std::fixed << this->_dqTime << std::setprecision(6) << std::endl;
-	std::cout << "deque comp " << dcomp << " thoeretical max " << F(_deque.size()) << std::endl;
+	// std::cout << "deque comp " << dcomp << " thoeretical max " << F(_deque.size()) << std::endl;
 	std::cout << std::endl << "After vector:";
 	printContainer(this->_vector);
 	std::cout << "vector " << std::fixed << this->_vTime << std::setprecision(6) << std::endl;
-	std::cout << "vector comp " << comp << " thoeretical max " << F(_vector.size()) << std::endl;
+	// std::cout << "vector comp " << comp << " thoeretical max " << F(_vector.size()) << std::endl;
 }
 
 const char *PmergeMe::FoundNotNumber::what() const throw()
