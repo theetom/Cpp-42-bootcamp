@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 14:09:34 by toferrei          #+#    #+#             */
-/*   Updated: 2026/02/19 15:16:50 by toferrei         ###   ########.fr       */
+/*   Updated: 2026/02/19 15:38:16 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,28 +133,36 @@ T extractPend(T &vector, size_t &n)
 
 void insertVector(std::vector<int> &vector, std::vector<int> &pend, size_t &n)
 {
-/* 	std::cout << "pend.size " << pend.size() << " n " << n << std::endl;
+	std::cout << "pend.size " << pend.size() << " n " << n << std::endl;
 	std::cout << "jacobstal :" << jacobstalNumber(pend.size() / n) - jacobstalNumber(pend.size() / n - 1)
-			<< "\ninput :" << pend.size() / n << std::endl; */
+			<< "\ninput :" << pend.size() / n << std::endl;
 	for (std::vector<int>::iterator it = pend.end() - 1; it >= pend.begin(); it = it - n)
 	{
-		std::vector<int>::iterator it2 = vector.begin() + (n - 1);
-		while (it2 < vector.end())
+		std::vector<int>::iterator begin = vector.begin() + (n - 1);
+		std::vector<int>::iterator end = vector.end();
+		size_t blocks = (end - begin + n - 1) / n;
+		size_t lo = 0;
+		size_t hi = blocks;
+		while (lo < hi)
 		{
+			size_t mid = (lo + hi) / 2;
+			std::vector<int>::iterator leader = begin + mid * n;
 			comp++;
-			if (*it2 >= *it)
-			{
-				for (size_t i = 0; i < n; i++)
-					vector.insert(it2 - n + 1, *(it - i));
-				break ;
-			}
-			it2 = it2 + n;
-			if (it2 >= vector.end())
-			{
-				for (size_t i = n; i > 0; i--)
-					vector.push_back(*(it - i + 1));
-				break ;
-			}
+			if (*leader < *it)
+				lo = mid + 1;
+			else
+				hi = mid;
+		}
+		std::vector<int>::iterator insertPos = begin + lo * n;
+		if (insertPos == vector.begin())
+		{
+			for (size_t i = n; i > 0; --i)
+				vector.insert(insertPos, *(it - i + 1));
+		}
+		else
+		{
+			for (size_t i = 0; i < n; ++i)
+				vector.insert(insertPos - n + 1, *(it - i));
 		}
 	}
 }
@@ -162,38 +170,34 @@ void insertVector(std::vector<int> &vector, std::vector<int> &pend, size_t &n)
 template <typename T>
 void insertDeque(T &vector, T &pend, size_t &n)
 {
-/* 	std::cout << "pend.size " << pend.size() << " n " << n << std::endl;
+	std::cout << "pend.size " << pend.size() << " n " << n << std::endl;
 	std::cout << "jacobstal :" << jacobstalNumber(pend.size() / n) - jacobstalNumber(pend.size() / n - 1)
-			<< "\ninput :" << pend.size() / n << std::endl; */
+			<< "\ninput :" << pend.size() / n << std::endl;
 	for (typename T::iterator it = pend.end() - 1; it >= pend.begin(); it = it - n)
 	{
-		typename T::iterator it2 = vector.begin() + (n - 1);
-		while (it2 < vector.end())
+		typename T::iterator begin = vector.begin() + (n - 1);
+		typename T::iterator end = vector.end();
+		size_t blocks = (end - begin + n - 1) / n;
+		size_t lo = 0;
+		size_t hi = blocks;
+		while (lo < hi)
 		{
+			size_t mid = (lo + hi) / 2;
+			typename T::iterator leader = begin + mid * n;
 			comp++;
-			if (*it2 >= *it)
-			{
-				T tmp;
-				for (size_t i = 0; i < n; ++i)
-				{
-					tmp.push_front(*(it - i));
-				}
-				if (it2 == vector.begin())
-				{
-					vector.insert(it2, tmp.begin(), tmp.end());
-					break ;
-				}
-				vector.insert(it2 - n + 1, tmp.begin(), tmp.end());
-				break ;
-			}
-			it2 = it2 + n;
-			if (it2 >= vector.end())
-			{
-				for (size_t i = n; i > 0; --i)
-					vector.push_back(*(it - i + 1));
-				break ;
-			}
+			if (*leader < *it)
+				lo = mid + 1;
+			else
+				hi = mid;
 		}
+		typename T::iterator insertPos = begin + lo * n;
+		T tmp;
+		for (size_t i = 0; i < n; ++i)
+			tmp.push_front(*(it - i));
+		if (insertPos == vector.begin())
+			vector.insert(insertPos, tmp.begin(), tmp.end());
+		else
+			vector.insert(insertPos - n + 1, tmp.begin(), tmp.end());
 	}
 }
 
@@ -230,13 +234,8 @@ void PmergeMe::vectorSort(char **input)
 {
 	struct timeval start, end;
 	gettimeofday(&start, NULL);
-
 	addToContainer(this->_vector, input);
-	std::vector<int> temp (this->_vector);
-	std::cout << "\nSorted:";
-	std::sort(temp.begin(), temp.end());
-	printContainer(temp);
-	size_t n = 1; (void)n;
+	size_t n = 1;
 	vectorActualSorting(this->_vector, n);
 	gettimeofday(&end, NULL);
 	this->_vTime = (end.tv_sec - start.tv_sec) * 1e6;
@@ -245,14 +244,11 @@ void PmergeMe::vectorSort(char **input)
 
 void PmergeMe::dequeSort(char **input)
 {
-	(void)input;
 	struct timeval start, end;
 	gettimeofday(&start, NULL);
 	addToContainer(this->_deque, input);
 	size_t n = 1;
 	actualSorting(this->_deque, n);
-
-
 	gettimeofday(&end, NULL);
 	this->_dqTime = (end.tv_sec - start.tv_sec) * 1e6;
 	this->_dqTime = (this->_dqTime + (end.tv_usec - start.tv_usec)) * 1e-6;
@@ -277,18 +273,25 @@ PmergeMe::PmergeMe(char **input)
 	for (char **tmp = input; *tmp; tmp++)
 		std::cout << " " << *tmp;
 	std::cout << std::endl;
+	std::vector<int> temp;
+	addToContainer(temp, input);
+	std::cout << "\nSorted:";
+	std::sort(temp.begin(), temp.end());
+	printContainer(temp);
+	std::cout << "==============deque sort================" << std::endl;
 	this->dequeSort(input);
 	dcomp = comp;
 	comp = 0;
-	this->vectorSort(input);
 	std::cout << std::endl << "After deque :";
 	printContainer(this->_deque);
 	std::cout << "deque " << std::fixed << this->_dqTime << std::setprecision(6) << std::endl;
-	// std::cout << "deque comp " << dcomp << " thoeretical max " << F(_deque.size()) << std::endl;
+	std::cout << "deque comp " << dcomp << " thoeretical max " << F(_deque.size()) << std::endl;
+	std::cout << "==============vector sort================" << std::endl;
+	this->vectorSort(input);
 	std::cout << std::endl << "After vector:";
 	printContainer(this->_vector);
 	std::cout << "vector " << std::fixed << this->_vTime << std::setprecision(6) << std::endl;
-	// std::cout << "vector comp " << comp << " thoeretical max " << F(_vector.size()) << std::endl;
+	std::cout << "vector comp " << comp << " thoeretical max " << F(_vector.size()) << std::endl;
 }
 
 const char *PmergeMe::FoundNotNumber::what() const throw()
