@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 16:53:59 by toferrei          #+#    #+#             */
-/*   Updated: 2026/02/18 12:56:21 by toferrei         ###   ########.fr       */
+/*   Updated: 2026/02/19 12:10:18 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ class Span
 		std::vector<int> getArray() const;
 
 		void addNumber(int i);
-		// void addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end);
+		void addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 
 		unsigned int shortestSpan();
 		unsigned int longestSpan();

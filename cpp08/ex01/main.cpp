@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 17:10:29 by toferrei          #+#    #+#             */
-/*   Updated: 2026/02/18 13:05:26 by toferrei         ###   ########.fr       */
+/*   Updated: 2026/02/19 12:11:40 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,11 @@ int main()
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	
 	std::cout << "array" << std::endl;
 	for (unsigned int i = 0; i < sp.getArray().size(); i++)
 	{
 		std::cout << sp.getArray().at(i) << std::endl;
 	}
-
 	try
 	{
 		std::cout << "shortest span:" << sp.shortestSpan() << std::endl;
@@ -55,26 +53,27 @@ int main()
 	gettimeofday(&time, NULL);
 	// srand(hash3(time.tv_sec, time.tv_usec, getpid()));
 	srand(time.tv_usec);
-	// std::vector<int> tmp;
+	std::vector<int> tmp;
 	Span test(100000);
 	try
 	{
 		std::cout << "random array" << std::endl;
 		for (int i = 0; i < 50000; i++)
 		{
-			// tmp.push_back(rand());
-			test.addNumber(rand());
+			tmp.push_back(rand());
+			// test.addNumber(rand());
 		}
-		// test.addNumber(tmp.begin(), tmp.end());
+		test.addNumber(tmp.begin(), tmp.end());
+		tmp.clear();
 		std::cout << "shortest span:" << test.shortestSpan() << std::endl;
 		std::cout << "longest span:" << test.longestSpan() << std::endl;
 		std::cout << "array size:" << test.getArray().size() << std::endl;
-		// test.addNumber(tmp.begin(), tmp.end());
 		for (int i = 0; i < 50000; i++)
 		{
-			// tmp.push_back(rand());
-			test.addNumber(rand());
+			tmp.push_back(rand());
+			// test.addNumber(rand());
 		}
+		test.addNumber(tmp.begin(), tmp.end());
 		std::cout << "shortest span:" << test.shortestSpan() << std::endl;
 		std::cout << "longest span:" << test.longestSpan() << std::endl;
 		std::cout << "array size:" << test.getArray().size() << std::endl;
@@ -84,9 +83,5 @@ int main()
 	{
 		std::cerr << e.what() << '\n';
 	}
-	
-
-
-
 	return 0;
 }

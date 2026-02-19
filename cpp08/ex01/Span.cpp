@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 16:53:44 by toferrei          #+#    #+#             */
-/*   Updated: 2026/02/18 12:56:14 by toferrei         ###   ########.fr       */
+/*   Updated: 2026/02/19 12:10:11 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,12 @@ void Span::addNumber(int i)
 	this->_arr.push_back(i);
 }
 
-// void Span::addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end)
-// {
-// 	if (this->_arr.size() + (end - begin) > this->_N)
-// 		throw Span::ContainerFull();
-// 	this->_arr.insert(this->_arr.end(), begin, end);
-// }
+void Span::addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
+	if (this->_arr.size() + (end - begin) > this->_N)
+		throw Span::ContainerFull();
+	this->_arr.insert(this->_arr.end(), begin, end);
+}
 
 unsigned int Span::shortestSpan()
 {
