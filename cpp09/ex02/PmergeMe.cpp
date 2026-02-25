@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 14:09:34 by toferrei          #+#    #+#             */
-/*   Updated: 2026/02/19 15:38:16 by toferrei         ###   ########.fr       */
+/*   Updated: 2026/02/25 09:41:48 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,9 +133,9 @@ T extractPend(T &vector, size_t &n)
 
 void insertVector(std::vector<int> &vector, std::vector<int> &pend, size_t &n)
 {
-	std::cout << "pend.size " << pend.size() << " n " << n << std::endl;
-	std::cout << "jacobstal :" << jacobstalNumber(pend.size() / n) - jacobstalNumber(pend.size() / n - 1)
-			<< "\ninput :" << pend.size() / n << std::endl;
+	// std::cout << "pend.size " << pend.size() << " n " << n << std::endl;
+	// std::cout << "jacobstal :" << jacobstalNumber(pend.size() / n) - jacobstalNumber(pend.size() / n - 1)
+			// << "\ninput :" << pend.size() / n << std::endl;
 	for (std::vector<int>::iterator it = pend.end() - 1; it >= pend.begin(); it = it - n)
 	{
 		std::vector<int>::iterator begin = vector.begin() + (n - 1);
@@ -170,9 +170,9 @@ void insertVector(std::vector<int> &vector, std::vector<int> &pend, size_t &n)
 template <typename T>
 void insertDeque(T &vector, T &pend, size_t &n)
 {
-	std::cout << "pend.size " << pend.size() << " n " << n << std::endl;
-	std::cout << "jacobstal :" << jacobstalNumber(pend.size() / n) - jacobstalNumber(pend.size() / n - 1)
-			<< "\ninput :" << pend.size() / n << std::endl;
+	// std::cout << "pend.size " << pend.size() << " n " << n << std::endl;
+	// std::cout << "jacobstal :" << jacobstalNumber(pend.size() / n) - jacobstalNumber(pend.size() / n - 1)
+	// 		<< "\ninput :" << pend.size() / n << std::endl;
 	for (typename T::iterator it = pend.end() - 1; it >= pend.begin(); it = it - n)
 	{
 		typename T::iterator begin = vector.begin() + (n - 1);
@@ -278,20 +278,20 @@ PmergeMe::PmergeMe(char **input)
 	std::cout << "\nSorted:";
 	std::sort(temp.begin(), temp.end());
 	printContainer(temp);
-	std::cout << "==============deque sort================" << std::endl;
+	std::cout << "\n==============deque sort================" << std::endl;
 	this->dequeSort(input);
 	dcomp = comp;
 	comp = 0;
 	std::cout << std::endl << "After deque :";
 	printContainer(this->_deque);
 	std::cout << "deque " << std::fixed << this->_dqTime << std::setprecision(6) << std::endl;
-	std::cout << "deque comp " << dcomp << " thoeretical max " << F(_deque.size()) << std::endl;
-	std::cout << "==============vector sort================" << std::endl;
+	// std::cout << "deque comp " << dcomp << " thoeretical max " << F(_deque.size()) << std::endl;
+	std::cout << "\n==============vector sort================" << std::endl;
 	this->vectorSort(input);
 	std::cout << std::endl << "After vector:";
 	printContainer(this->_vector);
 	std::cout << "vector " << std::fixed << this->_vTime << std::setprecision(6) << std::endl;
-	std::cout << "vector comp " << comp << " thoeretical max " << F(_vector.size()) << std::endl;
+	// std::cout << "vector comp " << comp << " thoeretical max " << F(_vector.size()) << std::endl;
 }
 
 const char *PmergeMe::FoundNotNumber::what() const throw()
